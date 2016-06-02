@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Boutons{
+public class AfficherPiece{
 	
 }
