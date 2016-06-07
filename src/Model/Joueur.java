@@ -7,7 +7,7 @@ import java.awt.Color;
 public class Joueur {
 
 	/**
-	 * Les différentes pièces du joueur
+	 * Les différentes pièces du joueur. La dernière pièce est toujours null
 	 */
 	private Piece[] pieces;
 	/**
@@ -29,7 +29,11 @@ public class Joueur {
 	 * @param couleur Couleur du joueur et de ses pièces
 	 */
 	public Joueur(String nom, Color couleur) {
-		System.out.println("Joueur.Joueur n'est pas implémenté");
+		this.pieces = new Piece[1];
+		pieces[0] = null;
+		this.couleur = couleur;
+		this.nom = nom;
+		this.nombrePoints = 0;
 	}
 
 	/**
@@ -37,7 +41,13 @@ public class Joueur {
 	 * @param piece Pièce à ajouter au joueur
 	 */
 	public void ajouterPiece(Piece piece) {
-		System.out.println("Joueur.ajouterPiece n'est pas implémenté");
+		int nbPieces = 0;
+		for(nbPieces=0; pieces[nbPieces]!=null; nbPieces++);
+		Piece[] nouvelles = new Piece[nbPieces+2];
+		for(int i=0; i<nbPieces; i++)
+			nouvelles[i] = pieces[i];
+		nouvelles[nbPieces] = piece;
+		nouvelles[nbPieces+1] = null;
 	}
 
 	/**
@@ -69,13 +79,16 @@ public class Joueur {
 	}
 
 	/**
-	 * Place une pièce sur le plateau, et retire les points de la pièce, au joueur
+	 * Place une pièce sur le plateau, et ajoute les points de la pièce, au joueur
 	 * @param piece Pièce à placer
 	 * @param position Indique la position sur le plateau où placer la pièce
 	 * @param plateau Plateau sur lequel placer la pièce
 	 */
-	public void placerPiece(Piece piece, int[][] position, Plateau plateau) {
-		System.out.println("Joueur.placerPiece n'est pas implémenté");
+	public void placerPiece(Piece piece, int[] position, Plateau plateau) {
+		if(piece.piecePosable(plateau, position)){
+			plateau.ajouterPiece(position, piece);
+			this.nombrePoints+=piece.getNombrePoints();
+		}
 	}
 
 }

@@ -39,10 +39,10 @@ public class Piece {
 	 * @param numeroPiece Numéro de la pièce (la même que les 3 de la même forme, des autres couleurs)
 	 */
 	public Piece(Joueur joueur, int[][] map, int numeroPiece) {
-		this.numeroPiece = numeroPiece;
+		this.numero = numeroPiece;
 		this.map = map;
 		this.joueur = joueur;
-		this.position = new int[2]{0, 0};
+		this.position = new int[]{0, 0};
 	}
 
 	/**
@@ -104,13 +104,13 @@ public class Piece {
 	 * @param plateau L'autre pièce à placer juste à côté
 	 * @param position Position de la seconde pièce
 	 */
-	public boolean piecePosable(Plateau plateau, int[][] position) {
+	public boolean piecePosable(Plateau plateau, int[] position) {
 		boolean coinOK = false;
 		boolean bordOK = true;
 		Piece pieceTempon = null;
 		for(int i=0; i<7; i++)
 			for(int j=0; j<7; j++){
-				pieceTempon = plateau.getPieceSurCase(new int[2]{i, j});
+				pieceTempon = plateau.getPieceSurCase(new int[]{i+position[0], j+position[1]});
 				if(pieceTempon!=null){
 					if(pieceTempon.getJoueur()==this.joueur && this.map[i][j]==1)
 						coinOK = true;
