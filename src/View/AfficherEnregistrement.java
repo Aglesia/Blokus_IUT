@@ -1,9 +1,11 @@
 package View;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  * Affiche un menu permettant d'enregistrer la partie en cours
  */
-public class AfficherEnregistrement {
+public class AfficherEnregistrement extends JFrame{
 
 	/**
 	 * Objet permattant de sélectionner le numéro d'enregistrement

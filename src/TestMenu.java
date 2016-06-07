@@ -1,3 +1,7 @@
+import Model.*;
+import View.*;
+import Control.*;
+
 /**
  * Implémentation :
  *  - Classe Menu
@@ -14,13 +18,35 @@
  *  - Annulation du menu de chargement et réouverture de ce dernier (Plusieurs fois)
  */
 public class TestMenu {
+	private Menu menu;
+	private int ret;
 
 	/**
 	 * Lance la procédure de test
 	 */
 	public TestMenu() {
-		// TODO - implement TestMenu.TestMenu
-		throw new UnsupportedOperationException();
+		// On crée le menu et on récupère ses valeurs
+		this.menu = new Menu();
+
+		// On tente d'ouvrir la fenêtre
+		this.ret = menu.afficherMenu();
+		// Arrêt du programme
+		if(ret == -2)
+			System.out.println("L'utilisateur a quitté");
+		// Création d'une partie
+		else if(ret == -1)
+			System.out.println("L'utilisateur crée une nouvelle partie");
+		// Chargement d'une partie
+		else
+			System.out.println("Tentative de chargement de la partie numéro "+ret);
+	}
+
+	public Menu getMenu(){
+		return this.menu;
+	}
+
+	public int getRet(){
+		return this.ret;
 	}
 
 }

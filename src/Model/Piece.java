@@ -1,4 +1,5 @@
 package Model;
+import java.awt.Color;
 
 /**
  * Toutes les données d'une pièce sont incluses ici :

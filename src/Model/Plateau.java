@@ -1,4 +1,5 @@
 package Model;
+import java.awt.Color;
 
 /**
  * Plateau contenant les différentes pièces placées.

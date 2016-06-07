@@ -1,9 +1,17 @@
 package View;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
 
 /**
  * Gère tous les boutons des menus, du plateau et des pièces
  */
-public class Bouton {
+public class Bouton extends JButton{
+
+	/**
+	 * Nom du bouton, utilisé par le programme
+	 */
+	private String nom;
 
 	/**
 	 * Crée un bouton avec ses différents paramètres
@@ -14,8 +22,22 @@ public class Bouton {
 	 * @param police Police à utiliser sur le texte du bouton
 	 */
 	public Bouton(String nom, String texte, ImageIcon image, ActionListener listener, Font police) {
-		// TODO - implement Bouton.Bouton
-		throw new UnsupportedOperationException();
+		this.nom = nom;
+		
+		// On y associe le texte
+		if(texte != null)
+			this.setText(texte);
+		
+		// On y associe l'image
+		if(image != null)
+			this.setIcon(image);
+		
+		// On y associe l'évènement
+		if(listener != null)
+			this.addActionListener(listener);
+
+		if(police != null)
+			this.setFont(police);
 	}
 
 	/**
@@ -24,10 +46,5 @@ public class Bouton {
 	public String getNom() {
 		return this.nom;
 	}
-
-	/**
-	 * Nom du bouton, utilisé par le programme
-	 */
-	private String nom;
 
 }

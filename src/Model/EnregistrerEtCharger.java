@@ -19,8 +19,7 @@ public class EnregistrerEtCharger {
 	 * @param partie Partie en cours
 	 */
 	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
+		System.out.println("EnregistrerEtCharger.enregistrer n'est pas implémenté");
 	}
 
 	/**
@@ -28,17 +27,16 @@ public class EnregistrerEtCharger {
 	 * Retourne null si aucune partie n'est trouvée
 	 * @param numero Numéro de la partie à ouvrir
 	 */
-	public static EnregistrerEtCharger ouvrir(int numero) {
-		// TODO - implement EnregistrerEtCharger.ouvrir
-		throw new UnsupportedOperationException();
+	public EnregistrerEtCharger(int numero) {
+		System.out.println("EnregistrerEtCharger.ouvrir n'est pas implémenté");
 	}
 
 	/**
 	 * Place la partie ouverte en tant que partie en cours (Charge la partie)
 	 */
 	public Partie charger() {
-		// TODO - implement EnregistrerEtCharger.charger
-		throw new UnsupportedOperationException();
+		System.out.println("EnregistrerEtCharger.charger n'est pas implémenté");
+		return null;
 	}
 
 	/**
@@ -47,8 +45,8 @@ public class EnregistrerEtCharger {
 	 *  - Noms, couleurs et points des joueurs
 	 */
 	public String toString() {
-		// TODO - implement EnregistrerEtCharger.toString
-		throw new UnsupportedOperationException();
+		System.out.println("EnregistrerEtCharger.toString n'est pas implémenté");
+		return "4 joueurs, plateau de 21*21\nA le plus de points actuellement (20) : Dorian";
 	}
 
 	/**
@@ -56,8 +54,7 @@ public class EnregistrerEtCharger {
 	 * @param numero Emplacement à vérifier
 	 */
 	public static boolean partieExiste(int numero) {
-		// TODO - implement EnregistrerEtCharger.partieExiste
-		throw new UnsupportedOperationException();
+		return (numero == 2);
 	}
 
 	/**
@@ -65,118 +62,7 @@ public class EnregistrerEtCharger {
 	 * @param partie Partie en cours
 	 */
 	public static void enregistrementRapide(Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrementRapide
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Permet d'enregistrer la partie en cours, pour la reprendre plus tard.
-	 * @param numero Numéro sous lequel enregistrer la partie
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Permet d'enregistrer la partie en cours, pour la reprendre plus tard.
-	 * @param numero Numéro sous lequel enregistrer la partie
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Permet d'enregistrer la partie en cours, pour la reprendre plus tard.
-	 * @param numero Numéro sous lequel enregistrer la partie
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Permet d'enregistrer la partie en cours, pour la reprendre plus tard.
-	 * @param numero Numéro sous lequel enregistrer la partie
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Permet d'enregistrer la partie en cours, pour la reprendre plus tard.
-	 * @param numero Numéro sous lequel enregistrer la partie
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Permet d'enregistrer la partie en cours, pour la reprendre plus tard.
-	 * @param numero Numéro sous lequel enregistrer la partie
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Permet d'enregistrer la partie en cours, pour la reprendre plus tard.
-	 * @param numero Numéro sous lequel enregistrer la partie
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Permet d'enregistrer la partie en cours, pour la reprendre plus tard.
-	 * @param numero Numéro sous lequel enregistrer la partie
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Permet d'enregistrer la partie en cours, pour la reprendre plus tard.
-	 * @param numero Numéro sous lequel enregistrer la partie
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Permet d'enregistrer la partie en cours, pour la reprendre plus tard.
-	 * @param numero Numéro sous lequel enregistrer la partie
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * Permet d'enregistrer la partie en cours, pour la reprendre plus tard.
-	 * @param numero Numéro sous lequel enregistrer la partie
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrer(int numero, Partie partie) {
-		// TODO - implement EnregistrerEtCharger.enregistrer
-		throw new UnsupportedOperationException();
+		System.out.println("EnregistrerEtCharger.enregistrementRapide n'est pas implémenté");
 	}
 
 }

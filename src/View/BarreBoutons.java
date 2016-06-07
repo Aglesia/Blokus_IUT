@@ -1,11 +1,13 @@
 package View;
+import java.awt.*;
+import javax.swing.*;
 
 import Model.*;
 
 /**
  * Panel contenant tous les boutons de menu
  */
-public class BarreBoutons {
+public class BarreBoutons extends JPanel{
 
 	/**
 	 * Bouton pour inverser le sens de la pièce

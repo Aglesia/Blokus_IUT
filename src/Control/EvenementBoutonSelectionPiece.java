@@ -1,11 +1,12 @@
 package Control;
 
-import Model.*;
+import Model.Partie;
+import java.awt.event.*;
 
 /**
  * Gère tous les évènements des boutons de sélection des pièces
  */
-public class EvenementBoutonSelectionPiece {
+public class EvenementBoutonSelectionPiece implements ActionListener{
 
 	/**
 	 * partie en cours, permet d'accéder au model

@@ -1,4 +1,6 @@
 package View;
+import java.awt.*;
+import javax.swing.*;
 
 import Model.*;
 
@@ -6,7 +8,7 @@ import Model.*;
  * Gère l'affichage du plateau et de toutes les pièces placées.
  * Chaque case contient un bouton, qui change de couleur et s'active ou se désactive entre chaque tour/évènement de sélection de pièce
  */
-public class AfficherPlateau {
+public class AfficherPlateau extends JPanel{
 
 	/**
 	 * Matrice de boutons, qui rempli le plateau de boutons

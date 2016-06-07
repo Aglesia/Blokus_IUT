@@ -1,12 +1,13 @@
 package Control;
 
-import Model.*;
+import Model.Partie;
+import java.awt.event.*;
 
 /**
  * Gère tous les boutons de la barre d'outils.
  * Gère aussi l'affichage des menus de sauvegarde et de chargement
  */
-public class EvenementBoutonBarre {
+public class EvenementBoutonBarre implements ActionListener{
 
 	/**
 	 * partie en cours, permet de l'enregistrer ou de la recommencer

@@ -1,11 +1,13 @@
 package View;
+import java.awt.*;
+import javax.swing.*;
 
 import Model.*;
 
 /**
  * Fenêtre contenant tous les objets graphiques de la partie en cours
  */
-public class Fenetre {
+public class Fenetre extends JFrame{
 
 	/**
 	 * Panel contenant la sélection des pièces

@@ -1,11 +1,13 @@
 package View;
+import java.awt.*;
+import javax.swing.*;
 
 import Model.*;
 
 /**
  * Panel contenant toutes les infos du joueur actuel et des différents joueurs de la partie
  */
-public class Info {
+public class Info extends JPanel{
 
 	/**
 	 * Liste des joueurs, pour afficher leurs infos

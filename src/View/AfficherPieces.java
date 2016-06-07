@@ -1,11 +1,13 @@
 package View;
+import java.awt.*;
+import javax.swing.*;
 
 import Model.*;
 
 /**
  * Panel contenant les pièces à placer, sous forme de grille de boutons
  */
-public class AfficherPieces {
+public class AfficherPieces extends JPanel{
 
 	/**
 	 * Matrice de boutons, représentant les pièces à placer

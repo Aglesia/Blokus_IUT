@@ -1,4 +1,5 @@
 package Model;
+import java.awt.Color;
 
 /**
  * Données d'un joueur, avec son nom, sa couleur, ses pièces, ses points.

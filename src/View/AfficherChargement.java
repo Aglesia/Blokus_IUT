@@ -1,14 +1,31 @@
 package View;
+import Control.EvenementBoutonMenuChargement;
+import Model.Menu;
+import Model.EnregistrerEtCharger;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.Font;
+import javax.swing.*;
 
 /**
  * Ouvre une fenêtre permettant de charger une partie
  */
-public class AfficherChargement {
+public class AfficherChargement extends JFrame{
 
 	/**
-	 * Objet graphique permettant de sélectionner le numéro de la partie à charger
+	 * Boutons droite et gauche pour sélectionner les parties
 	 */
-	private SpinnerNumberModel numero;
+	private Bouton gauche;
+	private Bouton droite;
+	/**
+	 * Bouton de validation du choix de la partie à charger.
+	 * Peut être verrouillé
+	 */
+	private Bouton valider;
+	/**
+	 * Numéro de la partie affichée actuellement
+	 */
+	private JLabel numeroPartie;
 	/**
 	 * Première ligne d'infos de la partie sélectionnée
 	 */
@@ -17,21 +34,115 @@ public class AfficherChargement {
 	 * Deuxième ligne d'infos de la partie sélectionnée
 	 */
 	private JLabel infosPartie2;
+	/**
+	 * Numéro de la partie
+	 */
+	private int numero;
 
 	/**
 	 * Crée une fenêtre pour gérer le chargement d'une partie
+	 * @param menu Menu à utiliser pour stocket les données de la fenêtre
 	 */
-	public AfficherChargement() {
-		// TODO - implement AfficherChargement.AfficherChargement
-		throw new UnsupportedOperationException();
+	public AfficherChargement(Menu menu) {
+		// On crée les écouteurs
+		EvenementBoutonMenuChargement event = new EvenementBoutonMenuChargement(menu, this);
+		Font police = new Font("Arial", Font.BOLD, 28);
+		// On crée les boutons
+		this.valider = new Bouton("Valider", "Valider", null, event, police);
+		Bouton retour = new Bouton("Retour", "Retour", null, event, police);
+		this.gauche = new Bouton("Gauche", "<--", null, event, police);
+		this.droite = new Bouton("Droite", "-->", null, event, police);
+		// On crée les JLabel
+		this.numeroPartie = new JLabel("SLOT : 0");
+		this.infosPartie = new JLabel();
+		this.infosPartie2 = new JLabel("SLOT VIDE");
+		this.numero = 0;
+
+		// On crée les layouts et les panels
+		JPanel fond = new JPanel(new BorderLayout());
+		JPanel infos = new JPanel(new GridLayout(3, 0));
+		JPanel boutonsSuivantPrecedent = new JPanel(new GridLayout(0, 4));
+		JPanel boutonsRetourOk = new JPanel(new GridLayout(0, 2));
+		
+		// On place les objets sur les panels
+		fond.add(infos, BorderLayout.CENTER);
+		infos.add(infosPartie);
+		infos.add(infosPartie2);
+		infos.add(boutonsSuivantPrecedent);
+		boutonsSuivantPrecedent.add(gauche);
+		boutonsSuivantPrecedent.add(new JLabel());
+		boutonsSuivantPrecedent.add(new JLabel());
+		boutonsSuivantPrecedent.add(droite);
+		fond.add(numeroPartie, BorderLayout.NORTH);
+		fond.add(boutonsRetourOk, BorderLayout.SOUTH);
+		boutonsRetourOk.add(retour);
+		boutonsRetourOk.add(valider);
+		
+		// On met en page les objets
+		this.numeroPartie.setHorizontalAlignment(SwingConstants.CENTER);
+		this.infosPartie.setHorizontalAlignment(SwingConstants.CENTER);
+		this.infosPartie2.setHorizontalAlignment(SwingConstants.CENTER);
+		this.numeroPartie.setFont(police);
+		this.infosPartie.setFont(police);
+		this.infosPartie2.setFont(police);
+
+		// Si le slot 0 n'est pas disponible, on grise le bouton
+		this.valider.setEnabled(Model.EnregistrerEtCharger.partieExiste(0));
+		majDescription();
+		
+		// On initialise la fenêtre et on l'affiche
+		this.setSize(800, 600);
+		this.add(fond);
+		this.setUndecorated(true);
+		this.setVisible(true);
 	}
 
 	/**
-	 * Récupère le numéro entré par l'utilisateur
+	 * Chage le slot par le suivant (va au dernier si besoin)
+	 */
+	public void slotPrecedent(){
+		System.out.println("Slot précédent");
+		this.numero--;
+		if(this.numero<0)
+			this.numero = 9;
+		this.numeroPartie.setText("SLOT : "+numero);
+		this.valider.setEnabled(Model.EnregistrerEtCharger.partieExiste(this.numero));
+		majDescription();
+	}
+
+	/**
+	 * Change le slot par le suivant (revient au premier si besoin)
+	 */
+	public void slotSuivant(){
+		System.out.println("Slot suivant");
+		this.numero++;
+		if(this.numero>9)
+			this.numero = 0;
+		this.numeroPartie.setText("SLOT : "+numero);
+		this.valider.setEnabled(Model.EnregistrerEtCharger.partieExiste(this.numero));
+		majDescription();
+	}
+
+	/**
+	 * Récupère le numéro entré par l'utilisateur (fonction bloquante)
 	 */
 	public int getNumero() {
-		// TODO - implement AfficherChargement.getNumero
-		throw new UnsupportedOperationException();
+		return this.numero;
+	}
+
+	/**
+	 * Met à jour la description de la partie
+	 */
+	private void majDescription(){
+		if(Model.EnregistrerEtCharger.partieExiste(this.numero)){
+			EnregistrerEtCharger charge = new EnregistrerEtCharger(this.numero);
+			this.infosPartie.setText(charge.toString().substring(0, charge.toString().indexOf("\n")));
+			this.infosPartie2.setText(charge.toString().substring(charge.toString().indexOf("\n")));
+		}
+		else{
+			this.infosPartie.setText("");
+			this.infosPartie2.setText("SLOT VIDE");
+		}
 	}
 
 }
