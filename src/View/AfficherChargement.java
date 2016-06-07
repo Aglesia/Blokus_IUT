@@ -94,6 +94,8 @@ public class AfficherChargement extends JFrame{
 		this.setSize(800, 600);
 		this.add(fond);
 		this.setUndecorated(true);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setVisible(true);
 	}
 

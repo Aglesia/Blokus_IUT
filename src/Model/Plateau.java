@@ -31,6 +31,17 @@ public class Plateau {
 	}
 
 	/**
+	 * Retourne la taille du plateau
+	 */
+	public int getTaille(){
+		return this.taille;
+	}
+
+	public Color getBackground(){
+		return this.couleurFond;
+	}
+
+	/**
 	 * Place une pièce sur le damier
 	 * @param position Position de la pièce à placer
 	 * @param piece Pièce à placer

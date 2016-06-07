@@ -13,14 +13,40 @@ public class Info extends JPanel{
 	 * Liste des joueurs, pour afficher leurs infos
 	 */
 	private Joueur[] joueurs;
+	private JLabel nomJoueurActuel;
+	private JLabel couleurJoueurActuel;
+	private JLabel pieceJoueurActuel;
+	private JLabel nombreJoueurs;
+	private JLabel joueurGagnant;
 
 	/**
 	 * Crée un nouveau panel d'infos, avec tous les objets graphiques nécessaires
 	 * @param joueurs Liste des joueurs
 	 */
 	public Info(Joueur[] joueurs) {
-		// TODO - implement Info.Info
-		throw new UnsupportedOperationException();
+		this.joueurs = joueurs;
+		nomJoueurActuel = new JLabel("Aucun joueur");
+		couleurJoueurActuel = new JLabel();
+		pieceJoueurActuel = new JLabel();
+		int nbJoueurs = 4;
+		if(joueurs[3]==null)
+			nbJoueurs = 3;
+		if(joueurs[2]==null)
+			nbJoueurs = 2;
+		nombreJoueurs = new JLabel(nbJoueurs+" joueurs");
+		joueurGagnant = new JLabel("Personne ne gagne pour le moment");
+
+		// On crée les layouts
+		this.setLayout(new BorderLayout());
+		JPanel bas = new JPanel(new GridLayout(2, 0));
+
+		// On place les composants
+		this.add(nomJoueurActuel);
+		this.add(couleurJoueurActuel, BorderLayout.WEST);
+		this.add(pieceJoueurActuel, BorderLayout.EAST);
+		this.add(bas, BorderLayout.SOUTH);
+		bas.add(nombreJoueurs);
+		bas.add(joueurGagnant);
 	}
 
 	/**

@@ -91,4 +91,17 @@ public class Joueur {
 		}
 	}
 
+	/**
+	 * Indique si la pièce a été placée sur le plateau
+	 * @param      numeroPiece  Numéro unique de la pièce
+	 */
+	public boolean pieceEstPlacee(int numeroPiece){
+		boolean ret = true;
+		for(int nbPieces=0; pieces[nbPieces]!=null; nbPieces++)
+			if(pieces[nbPieces].getNumero()==numeroPiece)
+				if(pieces[nbPieces].getPosition()[0]==0 && pieces[nbPieces].getPosition()[1]==0)
+					ret = false;
+		return ret;
+	}
+
 }

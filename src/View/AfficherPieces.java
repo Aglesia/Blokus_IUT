@@ -1,6 +1,7 @@
 package View;
 import java.awt.*;
 import javax.swing.*;
+import Control.EvenementBoutonSelectionPiece;
 
 import Model.*;
 
@@ -13,17 +14,14 @@ public class AfficherPieces extends JPanel{
 	 * Matrice de boutons, représentant les pièces à placer
 	 */
 	private Bouton[][] grilleBoutonsPieces;
-	/**
-	 * Ensemble des positions des différentes pièces
-	 */
-	private int[][] positionPieces;
+	private EvenementBoutonSelectionPiece evenementPieces;
 
 	/**
 	 * Crée un panel qui affichera les pièces à placer, ainsi que tous les objets graphiques nécessaires
 	 */
-	public AfficherPieces() {
-		// TODO - implement AfficherPieces.AfficherPieces
-		throw new UnsupportedOperationException();
+	public AfficherPieces(Partie partie) {
+		grilleBoutonsPieces = new Bouton[17][13];
+		evenementPieces = new EvenementBoutonSelectionPiece(partie);
 	}
 
 	/**
@@ -31,8 +29,13 @@ public class AfficherPieces extends JPanel{
 	 * @param joueur Joueur actuellement en train de jouer
 	 */
 	public void majPieces(Joueur joueur) {
-		// TODO - implement AfficherPieces.majPieces
-		throw new UnsupportedOperationException();
+		// Pour tous les boutons présents, on active uniquement ceux dont les pièces ne sont pas placées
+		for(int i=0; i<13; i++)
+			for(int j=0; j<17; j++)
+				if(grilleBoutonsPieces[i][j]!=null){
+					grilleBoutonsPieces[i][j].setBackground(joueur.getCouleur());
+					grilleBoutonsPieces[i][j].setEnabled(!joueur.pieceEstPlacee(Integer.parseInt(grilleBoutonsPieces[i][j].getNom())));
+				}
 	}
 
 	/**
@@ -41,8 +44,23 @@ public class AfficherPieces extends JPanel{
 	 * @param position Position de la pièce sur la grille
 	 */
 	public void ajouterPiece(Piece piece, int[] position) {
-		// TODO - implement AfficherPieces.ajouterPiece
-		throw new UnsupportedOperationException();
+		// On crée des boutons à tous les emplacements de la pièce
+		for(int i=0; i<7; i++)
+			for(int j=0; j<7; j++)
+				if(position[1]+i<17 && position[0]+j<13)
+					if(piece.getMap()[i][j]==3)
+						grilleBoutonsPieces[i+position[1]][j+position[0]] = new Bouton(piece.getNumero()+"", null, null, evenementPieces, null);
+
+		// On met à jour l'affichage en remplaçant les emplacements vides par des JLabel
+		this.removeAll();
+		this.setLayout(new GridLayout(17, 13));
+		for(int i=0; i<17; i++)
+			for(int j=0; j<13; j++){
+				if(grilleBoutonsPieces[i][j]==null)
+					this.add(new JLabel());
+				else
+					this.add(grilleBoutonsPieces[i][j]);
+			}
 	}
 
 }

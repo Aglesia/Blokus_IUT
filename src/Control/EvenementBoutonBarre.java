@@ -2,6 +2,7 @@ package Control;
 
 import Model.Partie;
 import java.awt.event.*;
+import View.Bouton;
 
 /**
  * Gère tous les boutons de la barre d'outils.
@@ -19,8 +20,7 @@ public class EvenementBoutonBarre implements ActionListener{
 	 * @param partie Partie en cours
 	 */
 	public EvenementBoutonBarre(Partie partie) {
-		// TODO - implement EvenementBoutonBarre.EvenementBoutonBarre
-		throw new UnsupportedOperationException();
+		this.partie = partie;
 	}
 
 	/**
@@ -28,8 +28,8 @@ public class EvenementBoutonBarre implements ActionListener{
 	 * @param action Bouton sur lequel l'utilisateur a appuyé
 	 */
 	public void actionPerformed(ActionEvent action) {
-		// TODO - implement EvenementBoutonBarre.actionPerformed
-		throw new UnsupportedOperationException();
+		String nom = ((Bouton)action.getSource()).getNom();
+		System.out.println("Bouton Barre Appuyé : "+nom);
 	}
 
 }

@@ -21,6 +21,8 @@ public class Main {
 			TestChargement test3 = new TestChargement(test1.getRet());
 			partie = test3.getPartie();
 		}
+
+		TestFenetre test4 = new TestFenetre(partie);
 	}
 
 }

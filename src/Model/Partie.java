@@ -107,7 +107,7 @@ public class Partie {
 	/**
 	 * Retourne la liste des joueurs
 	 */
-	public Joueur[] getjoueurs() {
+	public Joueur[] getJoueurs() {
 		return this.joueurs;
 	}
 
@@ -116,6 +116,13 @@ public class Partie {
 	 */
 	public void pieceEstPlacee() {
 		this.piecePlacee = true;
+	}
+
+	/**
+	 * Retourne la pièce actuellement sélectionnée
+	 */
+	public Piece getPieceSelectionnee(){
+		return this.pieceSelectionee;
 	}
 
 	/**

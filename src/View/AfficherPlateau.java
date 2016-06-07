@@ -13,19 +13,11 @@ public class AfficherPlateau extends JPanel{
 	/**
 	 * Matrice de boutons, qui rempli le plateau de boutons
 	 */
-	private JButton[][] matriceBouton;
+	private Bouton[][] matriceBouton;
 	/**
 	 * Plateau du model
 	 */
 	private Plateau plateau;
-
-	/**
-	 * Met à jour les boutons à activer sur le plateau
-	 */
-	public void majPieces() {
-		// TODO - implement AfficherPlateau.majPieces
-		throw new UnsupportedOperationException();
-	}
 
 	/**
 	 * Crée un plateau graphique et tous les boutons nécessaires à son bon fonctionnement
@@ -33,7 +25,16 @@ public class AfficherPlateau extends JPanel{
 	 * @param plateau
 	 */
 	public AfficherPlateau(Partie partie) {
-		// TODO - implement AfficherPlateau.AfficherPlateau
+		matriceBouton = new Bouton[partie.getPlateau().getTaille()][partie.getPlateau().getTaille()];
+		this.plateau = partie.getPlateau();
+		this.setBackground(this.plateau.getBackground());
+	}
+
+	/**
+	 * Met à jour les boutons à activer sur le plateau
+	 */
+	public void majPieces() {
+		// TODO - implement AfficherPlateau.majPieces
 		throw new UnsupportedOperationException();
 	}
 

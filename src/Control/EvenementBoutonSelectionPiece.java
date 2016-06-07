@@ -2,6 +2,7 @@ package Control;
 
 import Model.Partie;
 import java.awt.event.*;
+import View.Bouton;
 
 /**
  * Gère tous les évènements des boutons de sélection des pièces
@@ -18,8 +19,7 @@ public class EvenementBoutonSelectionPiece implements ActionListener{
 	 * @param partie Partie en cours à utiliser
 	 */
 	public EvenementBoutonSelectionPiece(Partie partie) {
-		// TODO - implement EvenementBoutonSelectionPiece.EvenementBoutonSelectionPiece
-		throw new UnsupportedOperationException();
+		this.partie = partie;
 	}
 
 	/**
@@ -27,8 +27,8 @@ public class EvenementBoutonSelectionPiece implements ActionListener{
 	 * @param action Bouton sur lequel l'utilisateur a appuyé
 	 */
 	public void actionPerformed(ActionEvent action) {
-		// TODO - implement EvenementBoutonSelectionPiece.actionPerformed
-		throw new UnsupportedOperationException();
+		int numero = Integer.parseInt(((Bouton)action.getSource()).getNom());
+		System.out.println("La pièce : "+numero+" est sélectionnée");
 	}
 
 }

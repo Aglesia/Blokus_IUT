@@ -89,6 +89,7 @@ public class AfficherMenu extends JFrame{
 
 		// On crée la fenêtre
 		this.setSize(800, 600);
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

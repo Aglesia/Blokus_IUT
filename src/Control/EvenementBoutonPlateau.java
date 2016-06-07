@@ -2,6 +2,7 @@ package Control;
 
 import Model.Partie;
 import java.awt.event.*;
+import View.Bouton;
 
 /**
  * Gère tous les boutons présents sur le plateau.
