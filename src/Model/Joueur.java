@@ -29,8 +29,7 @@ public class Joueur {
 	 * @param couleur Couleur du joueur et de ses pièces
 	 */
 	public Joueur(String nom, Color couleur) {
-		// TODO - implement Joueur.Joueur
-		throw new UnsupportedOperationException();
+		System.out.println("Joueur.Joueur n'est pas implémenté");
 	}
 
 	/**
@@ -38,8 +37,7 @@ public class Joueur {
 	 * @param piece Pièce à ajouter au joueur
 	 */
 	public void ajouterPiece(Piece piece) {
-		// TODO - implement Joueur.ajouterPiece
-		throw new UnsupportedOperationException();
+		System.out.println("Joueur.ajouterPiece n'est pas implémenté");
 	}
 
 	/**
@@ -74,10 +72,10 @@ public class Joueur {
 	 * Place une pièce sur le plateau, et retire les points de la pièce, au joueur
 	 * @param piece Pièce à placer
 	 * @param position Indique la position sur le plateau où placer la pièce
+	 * @param plateau Plateau sur lequel placer la pièce
 	 */
-	public void placerPiece(Piece piece, int[][] position) {
-		// TODO - implement Joueur.placerPiece
-		throw new UnsupportedOperationException();
+	public void placerPiece(Piece piece, int[][] position, Plateau plateau) {
+		System.out.println("Joueur.placerPiece n'est pas implémenté");
 	}
 
 }

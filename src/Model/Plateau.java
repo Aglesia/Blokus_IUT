@@ -22,8 +22,12 @@ public class Plateau {
 	 * @param couleurFond Couleur de fond du damier
 	 */
 	public Plateau(int taille, Color couleurFond) {
-		// TODO - implement Plateau.Plateau
-		throw new UnsupportedOperationException();
+		this.taille = taille;
+		map = new Piece[taille][taille];
+		for(int i=0; i<taille; i++)
+			for(int j=0; j<taille; j++)
+				map[i][j] = null;
+		this.couleurFond = couleurFond;
 	}
 
 	/**
@@ -32,8 +36,15 @@ public class Plateau {
 	 * @param piece Pièce à placer
 	 */
 	public void ajouterPiece(int[] position, Piece piece) {
-		// TODO - implement Plateau.ajouterPiece
-		throw new UnsupportedOperationException();
+		if(position[0]<-1||position[0]>=this.taille||position[1]<-1||position[1]>=this.taille)
+			return;
+		piece.setPosition(position);
+		int[][] map = piece.getMap();
+		for(int i=position[0]; i<position[0]+7; i++)
+			for(int j=position[1]; j<position[1]+7; j++)
+				if(i>=0 && i<this.taille && j>=0 && j<this.taille)
+					if(map[i][j]==3)
+						this.map[i][j] = piece;
 	}
 
 	/**
@@ -41,8 +52,11 @@ public class Plateau {
 	 * @param position Case à regarder
 	 */
 	public Joueur getJoueurSurCase(int[] position) {
-		// TODO - implement Plateau.getJoueurSurCase
-		throw new UnsupportedOperationException();
+		if(position[0]<0||position[0]>=this.taille||position[1]<0||position[1]>=this.taille)
+			return null;
+		if(this.map[position[0]][position[1]]==null)
+			return null;
+		return this.map[position[0]][position[1]].getJoueur();
 	}
 
 	/**
@@ -50,17 +64,21 @@ public class Plateau {
 	 * @param position Position de la case choisie
 	 */
 	public Piece getPieceSurCase(int[] position) {
-		// TODO - implement Plateau.getPieceSurCase
-		throw new UnsupportedOperationException();
+		if(position[0]<0||position[0]>=this.taille||position[1]<0||position[1]>=this.taille)
+			return null;
+		return this.map[position[0]][position[1]];
 	}
 
 	/**
 	 * retourne la couleur de la case choisie (Soit couleur de fond, soit couleur du joueur)
 	 * @param position Adresse de la case choisie
 	 */
-	public Color getCouelurCase(int[] position) {
-		// TODO - implement Plateau.getCouelurCase
-		throw new UnsupportedOperationException();
+	public Color getCouleurCase(int[] position) {
+		if(position[0]<0||position[0]>=this.taille||position[1]<0||position[1]>=this.taille)
+			return this.couleurFond;
+		if(this.map[position[0]][position[1]]==null)
+			return this.couleurFond;
+		return this.map[position[0]][position[1]].getCouleur();
 	}
 
 }

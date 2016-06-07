@@ -31,7 +31,7 @@ public class TestPartie {
 		}
 		System.out.println("\nNoms des joueurs :\n"+nomsJoueurs+"\nCouleurs :\n"+couleursJoueurs);
 
-		
+		this.partie = new Partie(menu);
 	}
 
 	public Partie getPartie(){

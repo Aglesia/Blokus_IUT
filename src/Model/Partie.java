@@ -1,4 +1,5 @@
 package Model;
+import java.awt.Color;
 
 /**
  * Gère la partie en cours, contient les différentes données de la partie et lance les différents tours
@@ -14,7 +15,7 @@ public class Partie {
 	 */
 	private Joueur[] joueurs;
 	/**
-	 * Le menu de la partie, à savoir tous les paramètres entrés par les joueurs avant de ancer la partie (taille de la grille, couleurset noms des joueurs, nombre de joueurs...)
+	 * Le menu de la partie, à savoir tous les paramètres entrés par les joueurs avant de lancer la partie (taille de la grille, couleurset noms des joueurs, nombre de joueurs...)
 	 */
 	private Menu menu;
 	/**
@@ -36,11 +37,20 @@ public class Partie {
 
 	/**
 	 * Crée une nouvelle partie, à partir des paramètres envoyés (le Menu)
-	 * @param joueurs Paramètres de la partie, paramétrés depuis le menu principal
+	 * @param menu Paramètres de la partie, paramétrés depuis le menu principal
 	 */
-	public Partie(Menu joueurs) {
-		// TODO - implement Partie.Partie
-		throw new UnsupportedOperationException();
+	public Partie(Menu menu) {
+		this.plateau = new Plateau(menu.getTaille(), new Color(42, 42, 42));
+		this.nbJoueurs = menu.getNombreJoueurs();
+		joueurs = new Joueur[4];
+		this.menu = menu;
+		for(int i=0; i<nbJoueurs; i++)
+			joueurs[i] = new Joueur(menu.getNoms()[i], menu.getCouleurs()[i]);
+		for(int i=nbJoueurs; i<4; i++)
+			joueurs[i] = null;
+		pieceSelectionee = null;
+		joueurActuel = joueurs[0];
+		this.piecePlacee = false;
 	}
 
 	/**
@@ -54,8 +64,7 @@ public class Partie {
 	 *  - Regarde si un joueur a gagné
 	 */
 	public void jouer() {
-		// TODO - implement Partie.jouer
-		throw new UnsupportedOperationException();
+		System.out.println("Partie.jouer non implémenté");
 	}
 
 	/**
@@ -66,9 +75,8 @@ public class Partie {
 	 *  - Active les pièces du joueur actuel et désactive les autres
 	 *  - Met à jour l'affichage des pièces
 	 */
-	public void préparerTourSuivant() {
-		// TODO - implement Partie.préparerTourSuivant
-		throw new UnsupportedOperationException();
+	public void preparerTourSuivant() {
+		System.out.println("Partie.preparerTourSuivant non implémenté");
 	}
 
 	/**
@@ -85,8 +93,8 @@ public class Partie {
 	 *  - Toutes les pièces ont été posées
 	 */
 	public Joueur partieEstGagnee() {
-		// TODO - implement Partie.partieEstGagnee
-		throw new UnsupportedOperationException();
+		System.out.println("Partie.partieEstGagnee non implémenté");
+		return null;
 	}
 
 	/**
@@ -107,8 +115,7 @@ public class Partie {
 	 * Indique que la pièce a été placée
 	 */
 	public void pieceEstPlacee() {
-		// TODO - implement Partie.pieceEstPlacee
-		throw new UnsupportedOperationException();
+		this.piecePlacee = true;
 	}
 
 	/**
