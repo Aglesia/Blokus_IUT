@@ -22,13 +22,18 @@ public class Joueur {
 	 * Le nombre de points du joueur
 	 */
 	private int nombrePoints;
+	/**
+	 * Position de la case de départ
+	 */
+	private int[] positionDepart;
 
 	/**
 	 * Crée un nouveau joueur avec un nom et une couleur
 	 * @param nom Nom du joueur
 	 * @param couleur Couleur du joueur et de ses pièces
 	 */
-	public Joueur(String nom, Color couleur) {
+	public Joueur(String nom, Color couleur, int[] positionDepart) {
+		this.positionDepart = positionDepart;
 		this.pieces = new Piece[1];
 		pieces[0] = null;
 		this.couleur = couleur;
@@ -36,6 +41,13 @@ public class Joueur {
 		this.nombrePoints = 0;
 		for(Piece piece : EnsemblePieces.pieces(this))
 			this.ajouterPiece(piece);
+	}
+
+	/**
+	 * Retourne la position de la case de départ du joueur
+	 */
+	public int[] getPositionDepart(){
+		return this.positionDepart;
 	}
 
 	/**

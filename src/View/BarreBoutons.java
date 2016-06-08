@@ -40,8 +40,8 @@ public class BarreBoutons extends JPanel{
 	 * Crée une barre de boutons de menu
 	 * @param partie Partie actuelle
 	 */
-	public BarreBoutons(Partie partie) {
-		EvenementBoutonBarre event = new EvenementBoutonBarre(partie);
+	public BarreBoutons(Partie partie, Info info) {
+		EvenementBoutonBarre event = new EvenementBoutonBarre(partie, info);
 		boutonInverser = new Bouton("Inverser", "I", null, event, null);
 		boutonTourner = new Bouton("Tourner", "T", null, event, null);
 		boutonEnregistrer = new Bouton("Enregistrer", "E", null, event, null);

@@ -50,11 +50,11 @@ public class Plateau {
 		if(position[0]<-1||position[0]>=this.taille||position[1]<-1||position[1]>=this.taille)
 			return;
 		piece.setPosition(position);
-		int[][] map = piece.getMap();
+		int[][] mapPiece = piece.getMap();
 		for(int i=position[0]; i<position[0]+7; i++)
 			for(int j=position[1]; j<position[1]+7; j++)
 				if(i>=0 && i<this.taille && j>=0 && j<this.taille)
-					if(map[i][j]==3)
+					if(mapPiece[i-position[0]][j-position[1]]==3)
 						this.map[i][j] = piece;
 	}
 

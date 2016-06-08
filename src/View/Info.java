@@ -20,12 +20,14 @@ public class Info extends JPanel{
 	private JLabel joueurGagnant;
 	private Partie partie;
 	private Joueur joueurActuel;
+	private AfficherPlateau plateau;
 
 	/**
 	 * Crée un nouveau panel d'infos, avec tous les objets graphiques nécessaires
 	 * @param joueurs Liste des joueurs
 	 */
-	public Info(Partie partie) {
+	public Info(Partie partie, AfficherPlateau plateau) {
+		this.plateau = plateau;
 		this.partie = partie;
 		this.joueurs = partie.getJoueurs();
 		nomJoueurActuel = new JLabel("Aucun joueur");
@@ -90,6 +92,7 @@ public class Info extends JPanel{
 	 */
 	public void afficherPieceSelectionnee(Piece piece) {
 		System.out.println("Pièce sélectionnée : "+piece.getNumero());
+		plateau.majPositions(piece);
 		// On dessine la pièce
 		for(int i=0; i<7; i++)
 			for(int j=0; j<7; j++){

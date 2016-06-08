@@ -44,8 +44,27 @@ public class Partie {
 		this.nbJoueurs = menu.getNombreJoueurs();
 		joueurs = new Joueur[4];
 		this.menu = menu;
-		for(int i=0; i<nbJoueurs; i++)
-			joueurs[i] = new Joueur(menu.getNoms()[i], menu.getCouleurs()[i]);
+		for(int i=0; i<nbJoueurs; i++){
+			int[] pos;
+			switch(i){
+				case 0:
+					pos = new int[]{-1, -1};
+				break;
+
+				case 1:
+					pos = new int[]{-1, plateau.getTaille()};
+				break;
+
+				case 2:
+					pos = new int[]{plateau.getTaille(), plateau.getTaille()};
+				break;
+
+				default:
+					pos = new int[]{plateau.getTaille(), -1};
+				break;
+			}
+			joueurs[i] = new Joueur(menu.getNoms()[i], menu.getCouleurs()[i], pos);
+		}
 		for(int i=nbJoueurs; i<4; i++)
 			joueurs[i] = null;
 		pieceSelectionee = null;

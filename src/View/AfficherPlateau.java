@@ -16,6 +16,10 @@ public class AfficherPlateau extends JPanel{
 	 */
 	private Bouton[][] matriceBouton;
 	/**
+	 * Ensemble des positions possibles pour les pièces
+	 */
+	private int[][][] positionsPossibles;
+	/**
 	 * Plateau du model
 	 */
 	private Plateau plateau;
@@ -43,17 +47,44 @@ public class AfficherPlateau extends JPanel{
 	 * Met à jour les boutons à activer sur le plateau
 	 */
 	public void majPieces() {
-		// TODO - implement AfficherPlateau.majPieces
-		throw new UnsupportedOperationException();
+		for(int i=0; i<this.plateau.getTaille(); i++)
+			for(int j=0; j<this.plateau.getTaille(); j++){
+				if(this.plateau.getPieceSurCase(new int[]{i, j})!=null)
+					this.matriceBouton[i][j].setBackground(this.plateau.getPieceSurCase(new int[]{i, j}).getCouleur());
+				else
+					this.matriceBouton[i][j].setBackground(this.plateau.getBackground());
+				this.matriceBouton[i][j].setEnabled(false);
+			}
 	}
 
 	/**
 	 * Met à jour et affiche les positions possibles pour le placement de la pièce
 	 * @param pieceSelectionee
 	 */
-	public void majPositions(Piece pieceSelectionee) {
-		// TODO - implement AfficherPlateau.majPositions
-		throw new UnsupportedOperationException();
+	public void majPositions(Piece pieceSelectionee){
+		this.positionsPossibles = new int[plateau.getTaille()][plateau.getTaille()][2];
+		for(int i=0; i<this.plateau.getTaille(); i++)
+			for(int j=0; j<this.plateau.getTaille(); j++){
+				positionsPossibles[i][j][0] = -1;
+				positionsPossibles[i][j][1] = -1;
+				matriceBouton[i][j].setEnabled(false);
+				matriceBouton[i][j].setBackground(plateau.getBackground());
+			}
+		// On met à jour toutes les positions possibles
+		for(int i=-6; i<this.plateau.getTaille(); i++)
+			for(int j=-6; j<this.plateau.getTaille(); j++)
+				if(pieceSelectionee.piecePosable(plateau, new int[]{i, j})){
+					// On pointe toutes les cases vers cette pièce, et on les active
+					for(int k=0; k<7; k++)
+						for(int l=0; l<7; l++){
+							if(pieceSelectionee.getMap()[k][l]==3 && (i+k)>=0 && (j+l)>=0 && (i+k)<plateau.getTaille() && (j+l)<plateau.getTaille()){
+								positionsPossibles[i+k][j+l][0] = i;
+								positionsPossibles[i+k][j+l][1] = j;
+								matriceBouton[i+k][j+l].setEnabled(true);
+								matriceBouton[i+k][j+l].setBackground(pieceSelectionee.getJoueur().getCouleur());
+							}
+						}
+				}
 	}
 
 }

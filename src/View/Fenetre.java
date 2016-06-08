@@ -35,10 +35,10 @@ public class Fenetre extends JFrame{
 	 */
 	public Fenetre(Partie partie, Piece[] pieces) {
 		// On crée les différents composants de la fenêtre
-		BarreBoutons barreDeBoutons = new BarreBoutons(partie);
-		Info barreDInfos = new Info(partie);
-		AfficherPieces affichagePieces = new AfficherPieces(partie, barreDInfos);
 		AfficherPlateau affichagePlateau = new AfficherPlateau(partie);
+		Info barreDInfos = new Info(partie, affichagePlateau);
+		BarreBoutons barreDeBoutons = new BarreBoutons(partie, barreDInfos);
+		AfficherPieces affichagePieces = new AfficherPieces(partie, barreDInfos);
 		
 		// On crée les layout et les panels associés
 		JPanel fond = new JPanel(new BorderLayout());
@@ -56,7 +56,6 @@ public class Fenetre extends JFrame{
 		this.setSize(800, 600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("BLOKUS");
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setVisible(true);
 
 		// On crée les pièces pour les mettre dans la fenêtre
@@ -66,6 +65,7 @@ public class Fenetre extends JFrame{
 		// On affiche le premier joueur
 		barreDInfos.majJoueur(partie.getJoueurActuel());
 		affichagePieces.majPieces(partie.getJoueurActuel());
+		affichagePlateau.majPieces();
 	}
 
 	/**

@@ -110,6 +110,9 @@ public class Piece {
 		Piece pieceTempon = null;
 		for(int i=0; i<7; i++)
 			for(int j=0; j<7; j++){
+				// Si on est dans notre coin, on marque que c'est bon
+				if(position[0]+i==joueur.getPositionDepart()[0] && position[1]+j==joueur.getPositionDepart()[1] && this.map[i][j]==1)
+					coinOK = true;
 				pieceTempon = plateau.getPieceSurCase(new int[]{i+position[0], j+position[1]});
 				if(pieceTempon!=null){
 					if(pieceTempon.getJoueur()==this.joueur && this.map[i][j]==1)
@@ -117,8 +120,16 @@ public class Piece {
 					if((this.map[i][j]==2 && pieceTempon.getJoueur()==this.joueur) || this.map[i][j]==3)
 						bordOK = false;
 				}
+				
 			}
-		return (coinOK && !bordOK);
+		// On vérifie que la pièce ne sort pas du plateau
+		for(int i=0; i<7; i++)
+			for(int j=0; j<7; j++)
+				if((position[0]+i<0 || position[0]+i>=plateau.getTaille() || position[1]+j<0 || position[1]+j>=plateau.getTaille()) && this.map[i][j]==3)
+					bordOK = false;
+		if(coinOK && bordOK)
+			System.out.println("Piece OK : ("+position[0]+"; "+position[1]+")");
+		return (coinOK && bordOK);
 	}
 
 	/**
@@ -140,7 +151,7 @@ public class Piece {
 		int[][] nouvelleMatrice = new int[7][7];
 		for(int i=0; i<7; i++)
 			for(int j=0; j<7; j++)
-				nouvelleMatrice[i][j] = this.map[6-i][j];
+				nouvelleMatrice[i][j] = this.map[i][6-j];
 		this.map = nouvelleMatrice;
 	}
 
