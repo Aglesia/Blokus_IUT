@@ -1,6 +1,7 @@
 package View;
 import java.awt.*;
 import javax.swing.*;
+import Control.EvenementBoutonPlateau;
 
 import Model.*;
 
@@ -28,6 +29,14 @@ public class AfficherPlateau extends JPanel{
 		matriceBouton = new Bouton[partie.getPlateau().getTaille()][partie.getPlateau().getTaille()];
 		this.plateau = partie.getPlateau();
 		this.setBackground(this.plateau.getBackground());
+		this.setLayout(new GridLayout(partie.getPlateau().getTaille(), partie.getPlateau().getTaille()));
+		EvenementBoutonPlateau event = new EvenementBoutonPlateau(partie);
+		for(int i=0; i<partie.getPlateau().getTaille(); i++)
+			for(int j=0; j<partie.getPlateau().getTaille(); j++){
+				matriceBouton[i][j] = new Bouton(i+"|"+j, null, null, event, null);
+				matriceBouton[i][j].setBackground(this.plateau.getBackground());
+				this.add(matriceBouton[i][j]);
+			}
 	}
 
 	/**

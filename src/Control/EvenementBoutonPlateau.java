@@ -20,8 +20,7 @@ public class EvenementBoutonPlateau implements ActionListener{
 	 * @param partie Partie en cours à utiliser
 	 */
 	public EvenementBoutonPlateau(Partie partie) {
-		// TODO - implement EvenementBoutonPlateau.EvenementBoutonPlateau
-		throw new UnsupportedOperationException();
+		this.partie = partie;
 	}
 
 	/**
@@ -29,8 +28,7 @@ public class EvenementBoutonPlateau implements ActionListener{
 	 * @param action Bouton sur lequel l'utilisateur a appuyé
 	 */
 	public void actionPerformed(ActionEvent action) {
-		// TODO - implement EvenementBoutonPlateau.actionPerformed
-		throw new UnsupportedOperationException();
+		System.out.println("Bouton sélectionné : "+((Bouton)action.getSource()).getNom());
 	}
 
 }

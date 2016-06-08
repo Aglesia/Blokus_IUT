@@ -19,9 +19,10 @@ public class AfficherPieces extends JPanel{
 	/**
 	 * Crée un panel qui affichera les pièces à placer, ainsi que tous les objets graphiques nécessaires
 	 */
-	public AfficherPieces(Partie partie) {
+	public AfficherPieces(Partie partie, Info info) {
 		grilleBoutonsPieces = new Bouton[17][13];
-		evenementPieces = new EvenementBoutonSelectionPiece(partie);
+		evenementPieces = new EvenementBoutonSelectionPiece(partie, this, info);
+		this.setPreferredSize(new Dimension(25*13, 25*17));
 	}
 
 	/**
@@ -30,11 +31,12 @@ public class AfficherPieces extends JPanel{
 	 */
 	public void majPieces(Joueur joueur) {
 		// Pour tous les boutons présents, on active uniquement ceux dont les pièces ne sont pas placées
-		for(int i=0; i<13; i++)
-			for(int j=0; j<17; j++)
+		for(int i=0; i<17; i++)
+			for(int j=0; j<13; j++)
 				if(grilleBoutonsPieces[i][j]!=null){
 					grilleBoutonsPieces[i][j].setBackground(joueur.getCouleur());
 					grilleBoutonsPieces[i][j].setEnabled(!joueur.pieceEstPlacee(Integer.parseInt(grilleBoutonsPieces[i][j].getNom())));
+					grilleBoutonsPieces[i][j].setVisible(!joueur.pieceEstPlacee(Integer.parseInt(grilleBoutonsPieces[i][j].getNom())));
 				}
 	}
 
@@ -48,8 +50,10 @@ public class AfficherPieces extends JPanel{
 		for(int i=0; i<7; i++)
 			for(int j=0; j<7; j++)
 				if(position[1]+i<17 && position[0]+j<13)
-					if(piece.getMap()[i][j]==3)
+					if(piece.getMap()[i][j]==3){
 						grilleBoutonsPieces[i+position[1]][j+position[0]] = new Bouton(piece.getNumero()+"", null, null, evenementPieces, null);
+						grilleBoutonsPieces[i+position[1]][j+position[0]].setPreferredSize(new Dimension(25, 25));
+					}
 
 		// On met à jour l'affichage en remplaçant les emplacements vides par des JLabel
 		this.removeAll();

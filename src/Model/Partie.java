@@ -119,6 +119,13 @@ public class Partie {
 	}
 
 	/**
+	 * Change la pièce qui est sélectionnée
+	 */
+	public void selectionnerPiece(Piece piece){
+		this.pieceSelectionee = piece;
+	}
+
+	/**
 	 * Retourne la pièce actuellement sélectionnée
 	 */
 	public Piece getPieceSelectionnee(){

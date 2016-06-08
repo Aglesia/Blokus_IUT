@@ -36,8 +36,8 @@ public class Fenetre extends JFrame{
 	public Fenetre(Partie partie, Piece[] pieces) {
 		// On crée les différents composants de la fenêtre
 		BarreBoutons barreDeBoutons = new BarreBoutons(partie);
-		Info barreDInfos = new Info(partie.getJoueurs());
-		AfficherPieces affichagePieces = new AfficherPieces(partie);
+		Info barreDInfos = new Info(partie);
+		AfficherPieces affichagePieces = new AfficherPieces(partie, barreDInfos);
 		AfficherPlateau affichagePlateau = new AfficherPlateau(partie);
 		
 		// On crée les layout et les panels associés
@@ -62,6 +62,10 @@ public class Fenetre extends JFrame{
 		// On crée les pièces pour les mettre dans la fenêtre
 		for(Piece piece : pieces)
 			affichagePieces.ajouterPiece(piece, piece.getPosition());
+
+		// On affiche le premier joueur
+		barreDInfos.majJoueur(partie.getJoueurActuel());
+		affichagePieces.majPieces(partie.getJoueurActuel());
 	}
 
 	/**

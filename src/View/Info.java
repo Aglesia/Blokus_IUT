@@ -15,19 +15,29 @@ public class Info extends JPanel{
 	private Joueur[] joueurs;
 	private JLabel nomJoueurActuel;
 	private JLabel couleurJoueurActuel;
-	private JLabel pieceJoueurActuel;
+	private JLabel[][] piecesJoueurActuel;
 	private JLabel nombreJoueurs;
 	private JLabel joueurGagnant;
+	private Partie partie;
+	private Joueur joueurActuel;
 
 	/**
 	 * Crée un nouveau panel d'infos, avec tous les objets graphiques nécessaires
 	 * @param joueurs Liste des joueurs
 	 */
-	public Info(Joueur[] joueurs) {
-		this.joueurs = joueurs;
+	public Info(Partie partie) {
+		this.partie = partie;
+		this.joueurs = partie.getJoueurs();
 		nomJoueurActuel = new JLabel("Aucun joueur");
 		couleurJoueurActuel = new JLabel();
-		pieceJoueurActuel = new JLabel();
+		JPanel pieceJoueurActuel = new JPanel(new GridLayout(7, 7));
+		piecesJoueurActuel = new JLabel[7][7];
+		for(int i=0; i<7; i++)
+			for(int j=0; j<7; j++){
+				piecesJoueurActuel[i][j] = new JLabel("    ");
+				piecesJoueurActuel[i][j].setOpaque(true);
+				pieceJoueurActuel.add(piecesJoueurActuel[i][j]);
+			}
 		int nbJoueurs = 4;
 		if(joueurs[3]==null)
 			nbJoueurs = 3;
@@ -47,6 +57,7 @@ public class Info extends JPanel{
 		this.add(bas, BorderLayout.SOUTH);
 		bas.add(nombreJoueurs);
 		bas.add(joueurGagnant);
+		nomJoueurActuel.setHorizontalAlignment(SwingConstants.CENTER);
 	}
 
 	/**
@@ -54,8 +65,22 @@ public class Info extends JPanel{
 	 * @param joueurActuel Joueur qui commence son tour
 	 */
 	public void majJoueur(Joueur joueurActuel) {
-		// TODO - implement Info.majJoueur
-		throw new UnsupportedOperationException();
+		this.joueurActuel = joueurActuel;
+		// On efface la pièce
+		for(int i=0; i<7; i++)
+			for(int j=0; j<7; j++)
+				piecesJoueurActuel[i][j].setBackground(Color.BLACK);
+
+		// On dessine la pièce
+		if(partie.getPieceSelectionnee()!=null)
+			for(int i=0; i<7; i++)
+				for(int j=0; j<7; j++)
+					if(partie.getPieceSelectionnee().getMap()[i][j]==3)
+						piecesJoueurActuel[i][j].setBackground(joueurActuel.getCouleur());
+
+		// On change le nom du joueur en cours
+		this.nomJoueurActuel.setText(joueurActuel.getNom());
+		this.couleurJoueurActuel.setBackground(joueurActuel.getCouleur());
 	}
 
 	/**
@@ -64,8 +89,15 @@ public class Info extends JPanel{
 	 * @param piece Pièce à afficher (null pour vider)
 	 */
 	public void afficherPieceSelectionnee(Piece piece) {
-		// TODO - implement Info.afficherPieceSelectionnee
-		throw new UnsupportedOperationException();
+		System.out.println("Pièce sélectionnée : "+piece.getNumero());
+		// On dessine la pièce
+		for(int i=0; i<7; i++)
+			for(int j=0; j<7; j++){
+				if(piece.getMap()[i][j]==3)
+					piecesJoueurActuel[i][j].setBackground(piece.getJoueur().getCouleur());
+				else
+					piecesJoueurActuel[i][j].setBackground(Color.BLACK);
+			}
 	}
 
 }
