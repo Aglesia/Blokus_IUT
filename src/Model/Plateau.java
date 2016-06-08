@@ -47,8 +47,7 @@ public class Plateau {
 	 * @param piece Pièce à placer
 	 */
 	public void ajouterPiece(int[] position, Piece piece) {
-		if(position[0]<-1||position[0]>=this.taille||position[1]<-1||position[1]>=this.taille)
-			return;
+		System.out.println("Piece placée");
 		piece.setPosition(position);
 		int[][] mapPiece = piece.getMap();
 		for(int i=position[0]; i<position[0]+7; i++)

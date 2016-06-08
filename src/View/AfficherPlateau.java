@@ -29,12 +29,12 @@ public class AfficherPlateau extends JPanel{
 	 * @param partie Partie en cours, pour avoir la taille du plateau, le plateau lui-même et les autres paramètres de la partie
 	 * @param plateau
 	 */
-	public AfficherPlateau(Partie partie) {
+	public AfficherPlateau(Partie partie, Fenetre fenetre) {
 		matriceBouton = new Bouton[partie.getPlateau().getTaille()][partie.getPlateau().getTaille()];
 		this.plateau = partie.getPlateau();
 		this.setBackground(this.plateau.getBackground());
 		this.setLayout(new GridLayout(partie.getPlateau().getTaille(), partie.getPlateau().getTaille()));
-		EvenementBoutonPlateau event = new EvenementBoutonPlateau(partie);
+		EvenementBoutonPlateau event = new EvenementBoutonPlateau(partie, fenetre);
 		for(int i=0; i<partie.getPlateau().getTaille(); i++)
 			for(int j=0; j<partie.getPlateau().getTaille(); j++){
 				matriceBouton[i][j] = new Bouton(i+"|"+j, null, null, event, null);
@@ -62,13 +62,13 @@ public class AfficherPlateau extends JPanel{
 	 * @param pieceSelectionee
 	 */
 	public void majPositions(Piece pieceSelectionee){
+		this.majPieces();
 		this.positionsPossibles = new int[plateau.getTaille()][plateau.getTaille()][2];
 		for(int i=0; i<this.plateau.getTaille(); i++)
 			for(int j=0; j<this.plateau.getTaille(); j++){
 				positionsPossibles[i][j][0] = -1;
 				positionsPossibles[i][j][1] = -1;
 				matriceBouton[i][j].setEnabled(false);
-				matriceBouton[i][j].setBackground(plateau.getBackground());
 			}
 		// On met à jour toutes les positions possibles
 		for(int i=-6; i<this.plateau.getTaille(); i++)
@@ -78,8 +78,7 @@ public class AfficherPlateau extends JPanel{
 					for(int k=0; k<7; k++)
 						for(int l=0; l<7; l++){
 							if(pieceSelectionee.getMap()[k][l]==3 && (i+k)>=0 && (j+l)>=0 && (i+k)<plateau.getTaille() && (j+l)<plateau.getTaille()){
-								positionsPossibles[i+k][j+l][0] = i;
-								positionsPossibles[i+k][j+l][1] = j;
+								matriceBouton[i+k][j+l].setNom(i+"|"+j);
 								matriceBouton[i+k][j+l].setEnabled(true);
 								matriceBouton[i+k][j+l].setBackground(pieceSelectionee.getJoueur().getCouleur());
 							}

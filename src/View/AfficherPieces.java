@@ -34,10 +34,25 @@ public class AfficherPieces extends JPanel{
 		for(int i=0; i<17; i++)
 			for(int j=0; j<13; j++)
 				if(grilleBoutonsPieces[i][j]!=null){
-					grilleBoutonsPieces[i][j].setBackground(joueur.getCouleur());
-					grilleBoutonsPieces[i][j].setEnabled(!joueur.pieceEstPlacee(Integer.parseInt(grilleBoutonsPieces[i][j].getNom())));
-					grilleBoutonsPieces[i][j].setVisible(!joueur.pieceEstPlacee(Integer.parseInt(grilleBoutonsPieces[i][j].getNom())));
+					if(!joueur.pieceEstPlacee(Integer.parseInt(grilleBoutonsPieces[i][j].getNom()))){
+						grilleBoutonsPieces[i][j].setEnabled(true);
+						grilleBoutonsPieces[i][j].setBackground(joueur.getCouleur());
+						grilleBoutonsPieces[i][j].setVisible(true);
+					}
 				}
+	}
+
+	/**
+	 * Désactive la grille de sélection de pièces
+	 */
+	public void viderGrille(){
+		for(int i=0; i<17; i++)
+			for(int j=0; j<13; j++){
+				if(grilleBoutonsPieces[i][j]!=null){
+					grilleBoutonsPieces[i][j].setEnabled(false);
+					grilleBoutonsPieces[i][j].setVisible(false);
+				}
+			}
 	}
 
 	/**

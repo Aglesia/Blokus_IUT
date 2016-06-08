@@ -1,4 +1,6 @@
-import Model.Partie;
+import Model.*;
+import View.*;
+import Control.*;
 
 /**
  * Classe principale, charge le programme et lance le jeu
@@ -11,18 +13,23 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		Partie partie = null;
-		TestMenu test1 = new TestMenu();
-		if(test1.getRet()==-1){
-			TestPartie test2 = new TestPartie(test1.getMenu());
-			partie = test2.getPartie();
+		Menu menu = new Menu();
+		switch(menu.afficherMenu()){
+			case -1:
+				partie = new Partie(menu);
+				break;
+
+			case -2:
+				return;
+
+			default:
+			break;
 		}
 
-		else if(test1.getRet()!=-2){
-			TestChargement test3 = new TestChargement(test1.getRet());
-			partie = test3.getPartie();
-		}
+		Fenetre fenetre = new Fenetre(partie, EnsemblePieces.pieces());
 
-		TestFenetre test4 = new TestFenetre(partie);
+		while(true)
+			partie.jouer(fenetre);
 	}
 
 }

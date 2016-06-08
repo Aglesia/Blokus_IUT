@@ -17,7 +17,7 @@ public class Fenetre extends JFrame{
 	/**
 	 * Panel contenant les pièces placées
 	 */
-	private AfficherPlateau affchagePlateau;
+	private AfficherPlateau affichagePlateau;
 	/**
 	 * Panel contenant les boutons de menu
 	 */
@@ -35,10 +35,10 @@ public class Fenetre extends JFrame{
 	 */
 	public Fenetre(Partie partie, Piece[] pieces) {
 		// On crée les différents composants de la fenêtre
-		AfficherPlateau affichagePlateau = new AfficherPlateau(partie);
-		Info barreDInfos = new Info(partie, affichagePlateau);
-		BarreBoutons barreDeBoutons = new BarreBoutons(partie, barreDInfos);
-		AfficherPieces affichagePieces = new AfficherPieces(partie, barreDInfos);
+		affichagePlateau = new AfficherPlateau(partie, this);
+		affichageInfos = new Info(partie, affichagePlateau);
+		affichageBoutons = new BarreBoutons(partie, affichageInfos);
+		affichagePieces = new AfficherPieces(partie, affichageInfos);
 		
 		// On crée les layout et les panels associés
 		JPanel fond = new JPanel(new BorderLayout());
@@ -48,9 +48,9 @@ public class Fenetre extends JFrame{
 		this.add(fond);
 		fond.add(gauche, BorderLayout.WEST);
 		fond.add(affichagePlateau);
-		gauche.add(barreDInfos, BorderLayout.NORTH);
+		gauche.add(affichageInfos, BorderLayout.NORTH);
 		gauche.add(affichagePieces);
-		gauche.add(barreDeBoutons, BorderLayout.SOUTH);
+		gauche.add(affichageBoutons, BorderLayout.SOUTH);
 		
 		// On crée et initialise la fenêtre
 		this.setSize(800, 600);
@@ -61,11 +61,24 @@ public class Fenetre extends JFrame{
 		// On crée les pièces pour les mettre dans la fenêtre
 		for(Piece piece : pieces)
 			affichagePieces.ajouterPiece(piece, piece.getPosition());
-
-		// On affiche le premier joueur
-		barreDInfos.majJoueur(partie.getJoueurActuel());
-		affichagePieces.majPieces(partie.getJoueurActuel());
 		affichagePlateau.majPieces();
+		affichagePieces.viderGrille();
+	}
+
+	public Info getPanelInfo(){
+		return this.affichageInfos;
+	}
+
+	public AfficherPlateau getPanelPlateau(){
+		return this.affichagePlateau;
+	}
+
+	public BarreBoutons getPanelBoutons(){
+		return this.affichageBoutons;
+	}
+
+	public AfficherPieces getPanelPieces(){
+		return this.affichagePieces;
 	}
 
 	/**
@@ -73,9 +86,10 @@ public class Fenetre extends JFrame{
 	 * (A VIRER !!!) Easter Egg : Si le nom est "XXXX" , afficher une image spécifique à la place de la couleur
 	 * @param joueur Joueur à qui est le tour
 	 */
-	public void maj(Joueur joueur) {
-		// TODO - implement Fenetre.maj
-		throw new UnsupportedOperationException();
+	public void maj(Joueur joueur) {		
+		affichageInfos.majJoueur(joueur);
+		affichagePieces.majPieces(joueur);
+		affichagePlateau.majPieces();
 	}
 
 }

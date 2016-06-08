@@ -1,4 +1,5 @@
 package Model;
+import View.Fenetre;
 import java.awt.Color;
 
 /**
@@ -68,34 +69,48 @@ public class Partie {
 		for(int i=nbJoueurs; i<4; i++)
 			joueurs[i] = null;
 		pieceSelectionee = null;
-		joueurActuel = joueurs[0];
+		joueurActuel = joueurs[nbJoueurs-1];
 		this.piecePlacee = false;
 	}
 
 	/**
 	 * Lance un nouveau tour :
 	 *  - Prépare le nouveau tour
-	 *  - Vide la pièce sélectionnée
-	 *  - Attend qu'une pièce ai été sélectionnée
-	 *  - Calcul toutes positions possibles pour cette pièce
-	 *         - Si aucune position n'est possible, saute le tour du joueur
-	 *  - Attend que la pièce ai été placée
-	 *  - Regarde si un joueur a gagné
+	 *  - Attend que la pièce ai été placée/le tour a été passé
 	 */
-	public void jouer() {
-		System.out.println("Partie.jouer non implémenté");
+	public void jouer(Fenetre fenetre) {
+		System.out.println("Tour suivant");
+		this.preparerTourSuivant(fenetre);
+		while(!piecePlacee){
+			try{
+				Thread.sleep(10);
+			} catch(InterruptedException e){
+				System.out.println("Erreur au sleep de Menu.java");
+			}
+		}
 	}
 
 	/**
 	 * Prépare le tour suivant :
-	 *  - Affiche les points de tous les joueurs
-	 *  - Met à jour l'affichage du plateau
-	 *  - Change le joueur, et indique le nouveau joueur actuel
-	 *  - Active les pièces du joueur actuel et désactive les autres
-	 *  - Met à jour l'affichage des pièces
+	 *  - Met à jour l'affichage de la fenêtre
+	 *  - Vide la pièce sélectionnée
+	 *  - Met à 0 le tour actuel (pièce sélectionnée, etc...)
 	 */
-	public void preparerTourSuivant() {
-		System.out.println("Partie.preparerTourSuivant non implémenté");
+	public void preparerTourSuivant(Fenetre fenetre) {
+		System.out.println("Nouveau tour");
+		//On change de joueur
+		for(int i=0; i<nbJoueurs; i++)
+			if(joueurs[i]==joueurActuel){
+				if(i<nbJoueurs-1)
+					joueurActuel = joueurs[i+1];
+				else
+					joueurActuel = joueurs[0];
+				i=nbJoueurs;
+			}
+		// On remet tout à 0
+		this.pieceSelectionee = null;
+		this.piecePlacee = false;
+		fenetre.maj(joueurActuel);
 	}
 
 	/**

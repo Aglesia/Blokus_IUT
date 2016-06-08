@@ -42,7 +42,7 @@ public class Piece {
 		this.numero = numeroPiece;
 		this.map = map;
 		this.joueur = joueur;
-		this.position = new int[]{0, 0};
+		this.position = new int[]{-10, -10};
 	}
 
 	/**
@@ -86,6 +86,7 @@ public class Piece {
 	 */
 	public void setPosition(int[] position) {
 		this.position = position;
+		System.out.println("Position de la pièce "+this.numero+" : ("+position[0]+", "+position[1]+")");
 	}
 
 	/**
@@ -127,8 +128,6 @@ public class Piece {
 			for(int j=0; j<7; j++)
 				if((position[0]+i<0 || position[0]+i>=plateau.getTaille() || position[1]+j<0 || position[1]+j>=plateau.getTaille()) && this.map[i][j]==3)
 					bordOK = false;
-		if(coinOK && bordOK)
-			System.out.println("Piece OK : ("+position[0]+"; "+position[1]+")");
 		return (coinOK && bordOK);
 	}
 

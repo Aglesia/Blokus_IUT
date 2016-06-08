@@ -115,7 +115,7 @@ public class Joueur {
 		boolean ret = true;
 		for(int nbPieces=0; pieces[nbPieces]!=null; nbPieces++)
 			if(pieces[nbPieces].getNumero()==numeroPiece)
-				if(pieces[nbPieces].getPosition()[0]==0 && pieces[nbPieces].getPosition()[1]==0)
+				if(pieces[nbPieces].getPosition()[0]==-10 && pieces[nbPieces].getPosition()[1]==-10)
 					ret = false;
 		return ret;
 	}

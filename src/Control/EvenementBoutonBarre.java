@@ -38,7 +38,6 @@ public class EvenementBoutonBarre implements ActionListener{
 				if(partie.getPieceSelectionnee()!=null){
 					partie.getPieceSelectionnee().inverserSens();
 					info.afficherPieceSelectionnee(partie.getPieceSelectionnee());
-					partie.pieceEstPlacee();
 				}
 			break;
 
@@ -46,7 +45,6 @@ public class EvenementBoutonBarre implements ActionListener{
 				if(partie.getPieceSelectionnee()!=null){
 					partie.getPieceSelectionnee().setOrientationDroite();
 					info.afficherPieceSelectionnee(partie.getPieceSelectionnee());
-					partie.pieceEstPlacee();
 				}
 			break;
 
