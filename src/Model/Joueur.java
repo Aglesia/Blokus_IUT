@@ -31,6 +31,7 @@ public class Joueur {
 	 * Crée un nouveau joueur avec un nom et une couleur
 	 * @param nom Nom du joueur
 	 * @param couleur Couleur du joueur et de ses pièces
+	 * @param positionDepart Position de la première pièce que le joueur peut poser
 	 */
 	public Joueur(String nom, Color couleur, int[] positionDepart) {
 		this.positionDepart = positionDepart;

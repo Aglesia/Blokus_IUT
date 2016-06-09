@@ -83,6 +83,8 @@ public class Info extends JPanel{
 		// On change le nom du joueur en cours
 		this.nomJoueurActuel.setText(joueurActuel.getNom());
 		this.couleurJoueurActuel.setBackground(joueurActuel.getCouleur());
+
+		// On regarde qui a le meilleur score
 	}
 
 	/**

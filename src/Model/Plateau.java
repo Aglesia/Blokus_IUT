@@ -37,6 +37,9 @@ public class Plateau {
 		return this.taille;
 	}
 
+	/**
+	 * Récupère la couleur d'arrière plan
+	 */
 	public Color getBackground(){
 		return this.couleurFond;
 	}
