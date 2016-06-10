@@ -52,6 +52,7 @@ public class Plateau {
 	public void ajouterPiece(int[] position, Piece piece) {
 		System.out.println("Piece placée");
 		piece.setPosition(position);
+		//piece.getJoueur().placerPiece(piece, position, this);
 		int[][] mapPiece = piece.getMap();
 		for(int i=position[0]; i<position[0]+7; i++)
 			for(int j=position[1]; j<position[1]+7; j++)

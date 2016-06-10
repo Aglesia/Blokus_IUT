@@ -88,6 +88,7 @@ public class Fenetre extends JFrame{
 	 */
 	public void maj(Joueur joueur) {		
 		affichageInfos.majJoueur(joueur);
+		affichagePieces.viderGrille();
 		affichagePieces.majPieces(joueur);
 		affichagePlateau.majPieces();
 	}

@@ -1,5 +1,6 @@
 package Model;
 import java.awt.Color;
+import View.Fenetre;
 
 /**
  * Données d'un joueur, avec son nom, sa couleur, ses pièces, ses points.
@@ -26,6 +27,14 @@ public class Joueur {
 	 * Position de la case de départ
 	 */
 	private int[] positionDepart;
+	/**
+	 * Indique si le joueur a abandonné
+	 */
+	private boolean abandon;
+	/**
+	 * Indique si la dernière pièce placée est le carrée simple
+	 */
+	private boolean dernierePiecePlaceeEstLeCarreSimple;
 
 	/**
 	 * Crée un nouveau joueur avec un nom et une couleur
@@ -42,6 +51,33 @@ public class Joueur {
 		this.nombrePoints = 0;
 		for(Piece piece : EnsemblePieces.pieces(this))
 			this.ajouterPiece(piece);
+		dernierePiecePlaceeEstLeCarreSimple = false;
+	}
+
+	/**
+	 * Fait joueur le joueur
+	 * @param      fenetre  La fenêtre sur laquelle on affiche les infos
+	 * @param      plateau Le plateau de la partie, utilisé par l'IA
+	 * @return     True si le joueur a fini son tour (IA), false sinon (joueur normal)
+	 */
+	public boolean jouer(Fenetre fenetre, Plateau plateau){
+		if(!this.abandon)
+			fenetre.maj(this);
+		return this.abandon;
+	}
+
+	/**
+	 * Fait abandonner le joueur, il ne peut plus jouer de la partie
+	 */
+	public void abandonner(){
+		this.abandon = true;
+	}
+
+	/**
+	 * indique si le joueur a abandonné
+	 */
+	public boolean aAbandonne(){
+		return this.abandon;
 	}
 
 	/**
@@ -71,7 +107,7 @@ public class Joueur {
 	 * Retourne le nombre de points qu'a le joueur
 	 */
 	public int getNombrePoints() {
-		return this.nombrePoints;
+		return this.nombrePoints+((dernierePiecePlaceeEstLeCarreSimple && this.nombrePoints==89)?20:((this.nombrePoints==89)?15:0));
 	}
 
 	/**
@@ -105,6 +141,7 @@ public class Joueur {
 		if(piece.piecePosable(plateau, position)){
 			plateau.ajouterPiece(position, piece);
 			this.nombrePoints+=piece.getNombrePoints();
+			dernierePiecePlaceeEstLeCarreSimple = (piece.getNombrePoints()==1);
 		}
 	}
 

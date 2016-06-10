@@ -35,6 +35,10 @@ public class BarreBoutons extends JPanel{
 	 * Bouton permettant de quitter le jeu (n'enregistre pas la partie)
 	 */
 	private Bouton boutonQuitter;
+	/**
+	 * Bouton permettant au joueur d'abandonner
+	 */
+	private Bouton boutonAbandonner;
 
 	/**
 	 * Crée une barre de boutons de menu
@@ -48,10 +52,12 @@ public class BarreBoutons extends JPanel{
 		boutonNouveau = new Bouton("Nouveau", "N", null, event, null);
 		boutonWarningProf = new Bouton("Warning", "W", null, event, null);
 		boutonQuitter = new Bouton("Quitter", "Q", null, event, null);
+		boutonAbandonner = new Bouton("Abandonner", "A", null, event, null);
 
-		this.setLayout(new GridLayout(0, 6));
+		this.setLayout(new GridLayout(0, 7));
 		this.add(boutonInverser);
 		this.add(boutonTourner);
+		this.add(boutonAbandonner);
 		this.add(boutonEnregistrer);
 		this.add(boutonNouveau);
 		this.add(boutonWarningProf);

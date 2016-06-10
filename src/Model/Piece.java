@@ -114,6 +114,8 @@ public class Piece {
 				// Si on est dans notre coin, on marque que c'est bon
 				if(position[0]+i==joueur.getPositionDepart()[0] && position[1]+j==joueur.getPositionDepart()[1] && this.map[i][j]==1)
 					coinOK = true;
+
+				// On regarde par rapport aux autres pièces du plateau
 				pieceTempon = plateau.getPieceSurCase(new int[]{i+position[0], j+position[1]});
 				if(pieceTempon!=null){
 					if(pieceTempon.getJoueur()==this.joueur && this.map[i][j]==1)

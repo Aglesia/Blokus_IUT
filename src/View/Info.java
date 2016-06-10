@@ -85,6 +85,24 @@ public class Info extends JPanel{
 		this.couleurJoueurActuel.setBackground(joueurActuel.getCouleur());
 
 		// On regarde qui a le meilleur score
+		int meilleurScore = 0;
+		boolean exEqo = true;
+		Joueur joueurQuiGagne = null;
+		for(Joueur joueur : this.joueurs){
+			if(joueur!=null){
+				if(joueur.getNombrePoints()>meilleurScore){
+					meilleurScore = joueur.getNombrePoints();
+					exEqo = false;
+					joueurQuiGagne = joueur;
+				}
+				else if(joueur.getNombrePoints()==meilleurScore)
+					exEqo = true;
+			}
+		}
+		if(exEqo)
+			joueurGagnant.setText("Personne ne gagne pour le moment");
+		else
+			joueurGagnant.setText(joueurQuiGagne.getNom()+" est en train de gagner, avec "+meilleurScore+" points");
 	}
 
 	/**

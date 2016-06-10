@@ -34,7 +34,7 @@ public class EvenementBoutonPlateau implements ActionListener{
 		int y = Integer.parseInt(((Bouton)action.getSource()).getNom().substring(((Bouton)action.getSource()).getNom().indexOf("|")+1));
 		System.out.println("Bouton sélectionné : ("+x+", "+y+")");
 		partie.getPieceSelectionnee().setPosition(new int[]{x, y});
-		partie.getPlateau().ajouterPiece(new int[]{x, y}, partie.getPieceSelectionnee());
+		partie.getPieceSelectionnee().getJoueur().placerPiece(partie.getPieceSelectionnee(), new int[]{x, y}, partie.getPlateau());
 		fenetre.getPanelPlateau().majPieces();
 		fenetre.getPanelPieces().viderGrille();
 		partie.pieceEstPlacee();

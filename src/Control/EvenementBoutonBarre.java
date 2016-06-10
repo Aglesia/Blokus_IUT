@@ -48,6 +48,11 @@ public class EvenementBoutonBarre implements ActionListener{
 				}
 			break;
 
+			case "Abandonner":
+				partie.getJoueurActuel().abandonner();
+				partie.pieceEstPlacee();
+			break;
+
 			default:
 			break;
 		}

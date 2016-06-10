@@ -81,6 +81,7 @@ public class Partie {
 	public void jouer(Fenetre fenetre) {
 		System.out.println("Tour suivant");
 		this.preparerTourSuivant(fenetre);
+		this.piecePlacee = joueurActuel.jouer(fenetre, this.plateau);
 		while(!piecePlacee){
 			try{
 				Thread.sleep(10);
@@ -88,6 +89,16 @@ public class Partie {
 				System.out.println("Erreur au sleep de Menu.java");
 			}
 		}
+		// On vérifie que le joueur peut encore jouer
+		boolean resteDesPieces = false;
+		for(Piece piece : joueurActuel.getPieces())
+			if(piece != null)
+				if(piece.getPosition()[0]==-10 && piece.getPosition()[1]==-10)
+					resteDesPieces=true;
+		if(!resteDesPieces)
+			joueurActuel.abandonner();
+		
+		this.pieceSelectionee = null;
 	}
 
 	/**
@@ -110,7 +121,6 @@ public class Partie {
 		// On remet tout à 0
 		this.pieceSelectionee = null;
 		this.piecePlacee = false;
-		fenetre.maj(joueurActuel);
 	}
 
 	/**
@@ -127,8 +137,20 @@ public class Partie {
 	 *  - Toutes les pièces ont été posées
 	 */
 	public Joueur partieEstGagnee() {
-		System.out.println("Partie.partieEstGagnee non implémenté");
-		return null;
+		Joueur gagnant = null;
+		boolean gagne = true;
+		for(int i=0; i<4; i++){
+			if(joueurs[i]!=null){
+				if(!joueurs[i].aAbandonne())
+					gagne = false;
+				if(gagnant==null)
+					gagnant = joueurs[i];
+				else if(gagnant.getNombrePoints()<joueurs[i].getNombrePoints())
+					gagnant = joueurs[i];
+			}
+		}
+
+		return (gagne)?gagnant:null;
 	}
 
 	/**

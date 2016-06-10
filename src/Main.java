@@ -28,8 +28,9 @@ public class Main {
 
 		Fenetre fenetre = new Fenetre(partie, EnsemblePieces.pieces());
 
-		while(true)
+		while(partie.partieEstGagnee()==null)
 			partie.jouer(fenetre);
+		System.out.println("Félicitation à "+partie.partieEstGagnee().getNom()+", avec ses "+partie.partieEstGagnee().getNombrePoints()+" points !!!");
 	}
 
 }
