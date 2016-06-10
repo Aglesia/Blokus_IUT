@@ -57,10 +57,10 @@ public class Joueur {
 	/**
 	 * Fait joueur le joueur
 	 * @param      fenetre  La fenêtre sur laquelle on affiche les infos
-	 * @param      plateau Le plateau de la partie, utilisé par l'IA
+	 * @param      partie La partie, utilisée par l'IA
 	 * @return     True si le joueur a fini son tour (IA), false sinon (joueur normal)
 	 */
-	public boolean jouer(Fenetre fenetre, Plateau plateau){
+	public boolean jouer(Fenetre fenetre, Partie partie){
 		if(!this.abandon)
 			fenetre.maj(this);
 		return this.abandon;

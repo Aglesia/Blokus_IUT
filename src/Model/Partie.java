@@ -45,7 +45,7 @@ public class Partie {
 		this.nbJoueurs = menu.getNombreJoueurs();
 		joueurs = new Joueur[4];
 		this.menu = menu;
-		for(int i=0; i<nbJoueurs; i++){
+		for(int i=0; i<4; i++){
 			int[] pos;
 			switch(i){
 				case 0:
@@ -64,10 +64,11 @@ public class Partie {
 					pos = new int[]{plateau.getTaille(), -1};
 				break;
 			}
-			joueurs[i] = new Joueur(menu.getNoms()[i], menu.getCouleurs()[i], pos);
+			if(i<nbJoueurs)
+				joueurs[i] = new Joueur(menu.getNoms()[i], menu.getCouleurs()[i], pos);
+			else
+				joueurs[i] = new Bot(menu.getNoms()[i], menu.getCouleurs()[i], pos);
 		}
-		for(int i=nbJoueurs; i<4; i++)
-			joueurs[i] = null;
 		pieceSelectionee = null;
 		joueurActuel = joueurs[nbJoueurs-1];
 		this.piecePlacee = false;
@@ -81,7 +82,7 @@ public class Partie {
 	public void jouer(Fenetre fenetre) {
 		System.out.println("Tour suivant");
 		this.preparerTourSuivant(fenetre);
-		this.piecePlacee = joueurActuel.jouer(fenetre, this.plateau);
+		this.piecePlacee = joueurActuel.jouer(fenetre, this);
 		while(!piecePlacee){
 			try{
 				Thread.sleep(10);
@@ -110,13 +111,13 @@ public class Partie {
 	public void preparerTourSuivant(Fenetre fenetre) {
 		System.out.println("Nouveau tour");
 		//On change de joueur
-		for(int i=0; i<nbJoueurs; i++)
+		for(int i=0; i<4; i++)
 			if(joueurs[i]==joueurActuel){
-				if(i<nbJoueurs-1)
+				if(i<3)
 					joueurActuel = joueurs[i+1];
 				else
 					joueurActuel = joueurs[0];
-				i=nbJoueurs;
+				i=4;
 			}
 		// On remet tout à 0
 		this.pieceSelectionee = null;

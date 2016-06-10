@@ -30,6 +30,7 @@ public class Main {
 
 		while(partie.partieEstGagnee()==null)
 			partie.jouer(fenetre);
+		fenetre.dispose();
 		System.out.println("Félicitation à "+partie.partieEstGagnee().getNom()+", avec ses "+partie.partieEstGagnee().getNombrePoints()+" points !!!");
 	}
 
