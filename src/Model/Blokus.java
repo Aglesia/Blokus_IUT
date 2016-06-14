@@ -27,10 +27,10 @@ public class Blokus {
 	}
 
 	/**
-	 * Lance la partie et la joue jusqu'à ce qu'elle se termine ou que le joueur quitte
+	 * Lance la partie et la joue jusqu'à ce qu'elle se termine ou que le joueur quitte. Retourne vrai pour quitter
 	 * @param partie Partie à lancer
 	 */
-	public static void jouer(Partie partie) {
+	public static boolean jouer(Partie partie) {
 		// TODO - implement Blokus.jouer
 		throw new UnsupportedOperationException();
 	}

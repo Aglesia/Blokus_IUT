@@ -53,7 +53,7 @@ public class Fenetre extends JFrame{
 		gauche.add(affichageBoutons, BorderLayout.SOUTH);
 		
 		// On crée et initialise la fenêtre
-		this.setSize(800, 600);
+		this.setSize(945, 700);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("BLOKUS");
 		this.setVisible(true);

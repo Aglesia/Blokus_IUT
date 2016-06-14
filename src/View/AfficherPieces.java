@@ -20,6 +20,7 @@ public class AfficherPieces extends JPanel{
 	 * Crée un panel qui affichera les pièces à placer, ainsi que tous les objets graphiques nécessaires
 	 */
 	public AfficherPieces(Partie partie, Info info) {
+		this.setBackground(partie.getPlateau().getBackground());
 		grilleBoutonsPieces = new Bouton[17][13];
 		evenementPieces = new EvenementBoutonSelectionPiece(partie, this, info);
 		this.setPreferredSize(new Dimension(25*13, 25*17));

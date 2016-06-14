@@ -35,14 +35,19 @@ public class Partie {
 	 * Indique si la pièce en cours a été placée
 	 */
 	private boolean piecePlacee;
+	/**
+	 * Indique si la partie est finie ou à recommencer
+	 */
+	private int partieFinie;
 
 	/**
 	 * Crée une nouvelle partie, à partir des paramètres envoyés (le Menu)
 	 * @param menu Paramètres de la partie, paramétrés depuis le menu principal
 	 */
 	public Partie(Menu menu) {
-		this.plateau = new Plateau(menu.getTaille(), new Color(42, 42, 42));
+		this.plateau = new Plateau(menu.getTaille(), new Color(90, 90, 90));
 		this.nbJoueurs = menu.getNombreJoueurs();
+		this.partieFinie = 0;
 		joueurs = new Joueur[4];
 		this.menu = menu;
 		for(int i=0; i<4; i++){
@@ -132,12 +137,12 @@ public class Partie {
 	}
 
 	/**
-	 * Retourne le joueur qui a gagné la partie si la partie est finie, ou null sinon
+	 * Retourne la liste des joueurs qui ont gagné la partie si la partie est finie, ou null sinon
 	 * Partie terminée quand :
 	 *  - Plus personne ne peut placer de pièce
 	 *  - Toutes les pièces ont été posées
 	 */
-	public Joueur partieEstGagnee() {
+	public Joueur[] partieEstGagnee() {
 		Joueur gagnant = null;
 		boolean gagne = true;
 		for(int i=0; i<4; i++){
@@ -151,7 +156,41 @@ public class Partie {
 			}
 		}
 
-		return (gagne)?gagnant:null;
+		int nbGagnants = 0;
+			for(int i=0; i<4; i++)
+				if(joueurs[i].getNombrePoints()==gagnant.getNombrePoints())
+					nbGagnants++;
+
+		Joueur[] gagnants = new Joueur[nbGagnants];
+		int temp = 0;
+			for(int i=0; i<4; i++)
+				if(joueurs[i].getNombrePoints()==gagnant.getNombrePoints())
+					gagnants[temp++] = joueurs[i];
+
+		return (gagne)?gagnants:null;
+	}
+
+	/**
+	 * Indique si la partie est finie. Retourne 0 si non, 1 un joueur a gagné, 2 si le joueur recommence une nouvelle partie, 3 pour quitter
+	 */
+	public int partieTerminee(){
+		if(this.partieEstGagnee()!=null)
+			this.partieFinie = 1;
+		return this.partieFinie;
+	}
+
+	/**
+	 * indique au Main qu'on doit recommencer une nouvelle partie
+	 */
+	public void recommencer(){
+		this.partieFinie = 2;
+	}
+
+	/**
+	 * Indique au Main qu'on veut quitter
+	 */
+	public void quitter(){
+		this.partieFinie = 3;
 	}
 
 	/**

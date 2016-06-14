@@ -14,13 +14,15 @@ public class Info extends JPanel{
 	 */
 	private Joueur[] joueurs;
 	private JLabel nomJoueurActuel;
-	private JLabel couleurJoueurActuel;
 	private JLabel[][] piecesJoueurActuel;
-	private JLabel nombreJoueurs;
 	private JLabel joueurGagnant;
 	private Partie partie;
 	private Joueur joueurActuel;
 	private AfficherPlateau plateau;
+	private JLabel pointsJoueurs1;
+	private JLabel pointsJoueurs2;
+	private JLabel pointsJoueurs3;
+	private JLabel pointsJoueurs4;
 
 	/**
 	 * Crée un nouveau panel d'infos, avec tous les objets graphiques nécessaires
@@ -31,13 +33,14 @@ public class Info extends JPanel{
 		this.partie = partie;
 		this.joueurs = partie.getJoueurs();
 		nomJoueurActuel = new JLabel("Aucun joueur");
-		couleurJoueurActuel = new JLabel();
+		nomJoueurActuel.setBackground(partie.getPlateau().getBackground());
 		JPanel pieceJoueurActuel = new JPanel(new GridLayout(7, 7));
 		piecesJoueurActuel = new JLabel[7][7];
 		for(int i=0; i<7; i++)
 			for(int j=0; j<7; j++){
 				piecesJoueurActuel[i][j] = new JLabel("    ");
 				piecesJoueurActuel[i][j].setOpaque(true);
+				piecesJoueurActuel[i][j].setBackground(partie.getPlateau().getBackground());
 				pieceJoueurActuel.add(piecesJoueurActuel[i][j]);
 			}
 		int nbJoueurs = 4;
@@ -45,21 +48,75 @@ public class Info extends JPanel{
 			nbJoueurs = 3;
 		if(joueurs[2]==null)
 			nbJoueurs = 2;
-		nombreJoueurs = new JLabel(nbJoueurs+" joueurs");
 		joueurGagnant = new JLabel("Personne ne gagne pour le moment");
+		joueurGagnant.setBackground(partie.getPlateau().getBackground());
+
+		// On crée les label des scores
+		JLabel nomJoueurs1 = new JLabel(joueurs[0].getNom());
+		JLabel nomJoueurs2 = new JLabel(joueurs[1].getNom());
+		JLabel nomJoueurs3 = new JLabel(joueurs[2].getNom());
+		JLabel nomJoueurs4 = new JLabel(joueurs[3].getNom());
+		pointsJoueurs1 = new JLabel(joueurs[0].getNombrePoints()+" points");
+		pointsJoueurs2 = new JLabel(joueurs[1].getNombrePoints()+" points");
+		pointsJoueurs3 = new JLabel(joueurs[2].getNombrePoints()+" points");
+		pointsJoueurs4 = new JLabel(joueurs[3].getNombrePoints()+" points");
+		JPanel pointsJoueurs = new JPanel(new GridLayout(2, 4));
+		pointsJoueurs.add(nomJoueurs1);
+		pointsJoueurs.add(nomJoueurs2);
+		pointsJoueurs.add(nomJoueurs3);
+		pointsJoueurs.add(nomJoueurs4);
+		pointsJoueurs.add(pointsJoueurs1);
+		pointsJoueurs.add(pointsJoueurs2);
+		pointsJoueurs.add(pointsJoueurs3);
+		pointsJoueurs.add(pointsJoueurs4);
+		pointsJoueurs.setBackground(partie.getPlateau().getBackground());
+
+		// on met le texte en noir
+		nomJoueurs1.setBackground(partie.getPlateau().getBackground());
+		nomJoueurs2.setBackground(partie.getPlateau().getBackground());
+		nomJoueurs3.setBackground(partie.getPlateau().getBackground());
+		nomJoueurs4.setBackground(partie.getPlateau().getBackground());
+		pointsJoueurs1.setBackground(partie.getPlateau().getBackground());
+		pointsJoueurs2.setBackground(partie.getPlateau().getBackground());
+		pointsJoueurs3.setBackground(partie.getPlateau().getBackground());
+		pointsJoueurs4.setBackground(partie.getPlateau().getBackground());
+
+		// On change la couleur de texte
+		nomJoueurs1.setForeground(joueurs[0].getCouleur());
+		nomJoueurs2.setForeground(joueurs[1].getCouleur());
+		nomJoueurs3.setForeground(joueurs[2].getCouleur());
+		nomJoueurs4.setForeground(joueurs[3].getCouleur());
+		pointsJoueurs1.setForeground(joueurs[0].getCouleur());
+		pointsJoueurs2.setForeground(joueurs[1].getCouleur());
+		pointsJoueurs3.setForeground(joueurs[2].getCouleur());
+		pointsJoueurs4.setForeground(joueurs[3].getCouleur());
+
+		// On centre le texte
+		nomJoueurs1.setHorizontalAlignment(SwingConstants.CENTER);
+		nomJoueurs2.setHorizontalAlignment(SwingConstants.CENTER);
+		nomJoueurs3.setHorizontalAlignment(SwingConstants.CENTER);
+		nomJoueurs4.setHorizontalAlignment(SwingConstants.CENTER);
+		pointsJoueurs1.setHorizontalAlignment(SwingConstants.CENTER);
+		pointsJoueurs2.setHorizontalAlignment(SwingConstants.CENTER);
+		pointsJoueurs3.setHorizontalAlignment(SwingConstants.CENTER);
+		pointsJoueurs4.setHorizontalAlignment(SwingConstants.CENTER);
 
 		// On crée les layouts
 		this.setLayout(new BorderLayout());
-		JPanel bas = new JPanel(new GridLayout(2, 0));
+		JPanel bas = new JPanel(new GridLayout(3, 0));
+		this.setBackground(partie.getPlateau().getBackground());
 
 		// On place les composants
 		this.add(nomJoueurActuel);
-		this.add(couleurJoueurActuel, BorderLayout.WEST);
 		this.add(pieceJoueurActuel, BorderLayout.EAST);
 		this.add(bas, BorderLayout.SOUTH);
-		bas.add(nombreJoueurs);
 		bas.add(joueurGagnant);
+		bas.add(pointsJoueurs);
+		bas.setBackground(partie.getPlateau().getBackground());
 		nomJoueurActuel.setHorizontalAlignment(SwingConstants.CENTER);
+		joueurGagnant.setHorizontalAlignment(SwingConstants.CENTER);
+		nomJoueurActuel.setForeground(Color.WHITE);
+		joueurGagnant.setForeground(Color.WHITE);
 	}
 
 	/**
@@ -71,7 +128,7 @@ public class Info extends JPanel{
 		// On efface la pièce
 		for(int i=0; i<7; i++)
 			for(int j=0; j<7; j++)
-				piecesJoueurActuel[i][j].setBackground(Color.BLACK);
+				piecesJoueurActuel[i][j].setBackground(partie.getPlateau().getBackground());
 
 		// On dessine la pièce
 		if(partie.getPieceSelectionnee()!=null)
@@ -82,7 +139,12 @@ public class Info extends JPanel{
 
 		// On change le nom du joueur en cours
 		this.nomJoueurActuel.setText(joueurActuel.getNom());
-		this.couleurJoueurActuel.setBackground(joueurActuel.getCouleur());
+
+		// On met à jour les scores de tous les joueurs
+		pointsJoueurs1.setText(joueurs[0].getNombrePoints()+" points");
+		pointsJoueurs2.setText(joueurs[1].getNombrePoints()+" points");
+		pointsJoueurs3.setText(joueurs[2].getNombrePoints()+" points");
+		pointsJoueurs4.setText(joueurs[3].getNombrePoints()+" points");
 
 		// On regarde qui a le meilleur score
 		int meilleurScore = 0;
@@ -119,7 +181,7 @@ public class Info extends JPanel{
 				if(piece.getMap()[i][j]==3)
 					piecesJoueurActuel[i][j].setBackground(piece.getJoueur().getCouleur());
 				else
-					piecesJoueurActuel[i][j].setBackground(Color.BLACK);
+					piecesJoueurActuel[i][j].setBackground(partie.getPlateau().getBackground());
 			}
 	}
 

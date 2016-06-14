@@ -12,26 +12,31 @@ public class Main {
 	 * @param args Arguments envoyés au programme
 	 */
 	public static void main(String[] args) {
-		Partie partie = null;
-		Menu menu = new Menu();
-		switch(menu.afficherMenu()){
-			case -1:
-				partie = new Partie(menu);
+		boolean continuer = true;
+		while(continuer){
+			Partie partie = null;
+			Menu menu = new Menu();
+			switch(menu.afficherMenu()){
+				case -1:
+					partie = new Partie(menu);
+					break;
+
+				case -2:
+					return;
+
+				default:
+					partie = new Partie(menu); //// A REMPLACER !! ///////////
 				break;
+			}
 
-			case -2:
-				return;
+			Fenetre fenetre = new Fenetre(partie, EnsemblePieces.pieces());
 
-			default:
-			break;
+			while(partie.partieTerminee()==0)
+				partie.jouer(fenetre);
+			fenetre.dispose();
+			new AfficherGagnant(partie.partieEstGagnee());
+			if(partie.partieTerminee()==3)
+				continuer = false;
 		}
-
-		Fenetre fenetre = new Fenetre(partie, EnsemblePieces.pieces());
-
-		while(partie.partieEstGagnee()==null)
-			partie.jouer(fenetre);
-		fenetre.dispose();
-		System.out.println("Félicitation à "+partie.partieEstGagnee().getNom()+", avec ses "+partie.partieEstGagnee().getNombrePoints()+" points !!!");
 	}
-
 }

@@ -53,6 +53,16 @@ public class EvenementBoutonBarre implements ActionListener{
 				partie.pieceEstPlacee();
 			break;
 
+			case "Nouveau":
+				partie.recommencer();
+				partie.pieceEstPlacee();
+			break;
+
+			case "Quitter":
+				partie.quitter();
+				partie.pieceEstPlacee();
+			break;
+
 			default:
 			break;
 		}

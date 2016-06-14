@@ -62,6 +62,15 @@ public class BarreBoutons extends JPanel{
 		this.add(boutonNouveau);
 		this.add(boutonWarningProf);
 		this.add(boutonQuitter);
+
+		// On met le fond d'écran aux boutons
+		boutonInverser.setBackground(partie.getPlateau().getBackground());
+		boutonTourner.setBackground(partie.getPlateau().getBackground());
+		boutonAbandonner.setBackground(partie.getPlateau().getBackground());
+		boutonEnregistrer.setBackground(partie.getPlateau().getBackground());
+		boutonNouveau.setBackground(partie.getPlateau().getBackground());
+		boutonWarningProf.setBackground(partie.getPlateau().getBackground());
+		boutonQuitter.setBackground(partie.getPlateau().getBackground());
 	}
 
 }
