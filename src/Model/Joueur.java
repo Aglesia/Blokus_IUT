@@ -139,10 +139,13 @@ public class Joueur {
 	 */
 	public void placerPiece(Piece piece, int[] position, Plateau plateau) {
 		if(piece.piecePosable(plateau, position)){
+			System.out.println("pièce posée : "+piece.getNumero()+" à ("+position[0]+", "+position[1]+")");
 			plateau.ajouterPiece(position, piece);
 			this.nombrePoints+=piece.getNombrePoints();
 			dernierePiecePlaceeEstLeCarreSimple = (piece.getNombrePoints()==1);
 		}
+		else
+			System.out.println("Piece non posée");
 	}
 
 	/**

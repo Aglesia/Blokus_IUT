@@ -80,7 +80,7 @@ public class Partie {
 				joueurs[i] = new Bot(menu.getNoms()[i], menu.getCouleurs()[i], pos);
 		}
 		pieceSelectionee = null;
-		joueurActuel = joueurs[nbJoueurs-1];
+		joueurActuel = joueurs[3];
 		this.piecePlacee = false;
 		this.enregistrer = null;
 	}

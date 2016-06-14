@@ -33,8 +33,8 @@ public class Main {
 
 			while(partie.partieTerminee()==0)
 				partie.jouer(fenetre);
-			fenetre.dispose();
 			new AfficherGagnant(partie.partieEstGagnee());
+			fenetre.dispose();
 			if(partie.partieTerminee()==3)
 				continuer = false;
 		}
