@@ -4,6 +4,7 @@ import Model.Partie;
 import java.awt.event.*;
 import View.Bouton;
 import View.Info;
+import javax.swing.JOptionPane;
 
 /**
  * Gère tous les boutons de la barre d'outils.
@@ -49,8 +50,10 @@ public class EvenementBoutonBarre implements ActionListener{
 			break;
 
 			case "Abandonner":
-				partie.getJoueurActuel().abandonner();
-				partie.pieceEstPlacee();
+				if(JOptionPane.showConfirmDialog (null, "Êtes-vous sûr de vouloir passer votre tour ? Celà vous empèche de jouer jusqu'à la fin de la partie !!", "Passer son tour", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+					partie.getJoueurActuel().abandonner();
+					partie.pieceEstPlacee();
+				}
 			break;
 
 			case "Nouveau":
