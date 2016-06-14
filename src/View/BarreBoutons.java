@@ -46,13 +46,13 @@ public class BarreBoutons extends JPanel{
 	 */
 	public BarreBoutons(Partie partie, Info info) {
 		EvenementBoutonBarre event = new EvenementBoutonBarre(partie, info);
-		boutonInverser = new Bouton("Inverser", "I", null, event, null);
-		boutonTourner = new Bouton("Tourner", "T", null, event, null);
-		boutonEnregistrer = new Bouton("Enregistrer", "E", null, event, null);
-		boutonNouveau = new Bouton("Nouveau", "N", null, event, null);
-		boutonWarningProf = new Bouton("Warning", "W", null, event, null);
-		boutonQuitter = new Bouton("Quitter", "Q", null, event, null);
-		boutonAbandonner = new Bouton("Abandonner", "A", null, event, null);
+		boutonInverser = new Bouton("Inverser", null, new ImageIcon("../data/images/inverser.png"), event, null);
+		boutonTourner = new Bouton("Tourner", null, new ImageIcon("../data/images/rotation.png"), event, null);
+		boutonEnregistrer = new Bouton("Enregistrer", null, new ImageIcon("../data/images/enregistrer.png"), event, null);
+		boutonNouveau = new Bouton("Nouveau", null, new ImageIcon("../data/images/nouveau.png"), event, null);
+		boutonWarningProf = new Bouton("Warning", null, new ImageIcon("../data/images/warning.png"), event, null);
+		boutonAbandonner = new Bouton("Abandonner", null, new ImageIcon("../data/images/abandon.png"), event, null);
+		boutonQuitter = new Bouton("Quitter", null, new ImageIcon("../data/images/quitter.png"), event, null);
 
 		this.setLayout(new GridLayout(0, 7));
 		this.add(boutonInverser);
