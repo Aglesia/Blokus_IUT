@@ -34,10 +34,10 @@ public class Info extends JPanel{
 		this.joueurs = partie.getJoueurs();
 		nomJoueurActuel = new JLabel("Aucun joueur");
 		nomJoueurActuel.setBackground(partie.getPlateau().getBackground());
-		JPanel pieceJoueurActuel = new JPanel(new GridLayout(7, 7));
-		piecesJoueurActuel = new JLabel[7][7];
-		for(int i=0; i<7; i++)
-			for(int j=0; j<7; j++){
+		JPanel pieceJoueurActuel = new JPanel(new GridLayout(5, 5));
+		piecesJoueurActuel = new JLabel[5][5];
+		for(int i=0; i<5; i++)
+			for(int j=0; j<5; j++){
 				piecesJoueurActuel[i][j] = new JLabel("    ");
 				piecesJoueurActuel[i][j].setOpaque(true);
 				piecesJoueurActuel[i][j].setBackground(partie.getPlateau().getBackground());
@@ -126,15 +126,15 @@ public class Info extends JPanel{
 	public void majJoueur(Joueur joueurActuel) {
 		this.joueurActuel = joueurActuel;
 		// On efface la pièce
-		for(int i=0; i<7; i++)
-			for(int j=0; j<7; j++)
+		for(int i=0; i<5; i++)
+			for(int j=0; j<5; j++)
 				piecesJoueurActuel[i][j].setBackground(partie.getPlateau().getBackground());
 
 		// On dessine la pièce
 		if(partie.getPieceSelectionnee()!=null)
-			for(int i=0; i<7; i++)
-				for(int j=0; j<7; j++)
-					if(partie.getPieceSelectionnee().getMap()[i][j]==3)
+			for(int i=0; i<5; i++)
+				for(int j=0; j<5; j++)
+					if(partie.getPieceSelectionnee().getMap()[i+1][j+1]==3)
 						piecesJoueurActuel[i][j].setBackground(joueurActuel.getCouleur());
 
 		// On change le nom du joueur en cours
@@ -176,9 +176,9 @@ public class Info extends JPanel{
 		System.out.println("Pièce sélectionnée : "+piece.getNumero());
 		plateau.majPositions(piece);
 		// On dessine la pièce
-		for(int i=0; i<7; i++)
-			for(int j=0; j<7; j++){
-				if(piece.getMap()[i][j]==3)
+		for(int i=0; i<5; i++)
+			for(int j=0; j<5; j++){
+				if(piece.getMap()[i+1][j+1]==3)
 					piecesJoueurActuel[i][j].setBackground(piece.getJoueur().getCouleur());
 				else
 					piecesJoueurActuel[i][j].setBackground(partie.getPlateau().getBackground());
