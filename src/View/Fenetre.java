@@ -56,6 +56,7 @@ public class Fenetre extends JFrame{
 		this.setSize(945, 700);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("BLOKUS");
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 
 		// On crée les pièces pour les mettre dans la fenêtre

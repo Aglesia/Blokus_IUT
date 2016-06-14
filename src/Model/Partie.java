@@ -82,6 +82,7 @@ public class Partie {
 		pieceSelectionee = null;
 		joueurActuel = joueurs[nbJoueurs-1];
 		this.piecePlacee = false;
+		this.enregistrer = null;
 	}
 
 	/**
@@ -91,28 +92,65 @@ public class Partie {
 	 */
 	public void jouer(Fenetre fenetre) {
 		if(this.enregistrer != null){
+			System.out.println(enregistrer.getNumero());
+			if(enregistrer.getNumero()==-2){
+				enregistrer.dispose();
+				enregistrer = null;
+			}
+			else if(enregistrer.getNumero()>-1){
+				EnregistrerEtCharger.enregistrer(enregistrer.getNumero(), this);
+				enregistrer.dispose();
+				enregistrer = null;
+			}
 
-		}
-		System.out.println("Tour suivant");
-		this.preparerTourSuivant(fenetre);
-		this.piecePlacee = joueurActuel.jouer(fenetre, this);
-		while(!piecePlacee){
 			try{
 				Thread.sleep(10);
 			} catch(InterruptedException e){
-				System.out.println("Erreur au sleep de Menu.java");
+				System.out.println("Erreur au sleep de Partie.java");
 			}
 		}
-		// On vérifie que le joueur peut encore jouer
-		boolean resteDesPieces = false;
-		for(Piece piece : joueurActuel.getPieces())
-			if(piece != null)
-				if(piece.getPosition()[0]==-10 && piece.getPosition()[1]==-10)
-					resteDesPieces=true;
-		if(!resteDesPieces)
-			joueurActuel.abandonner();
-		
-		this.pieceSelectionee = null;
+		else{
+			System.out.println("Tour suivant");
+			this.preparerTourSuivant(fenetre);
+			System.out.println("Joueur actuel = "+this.joueurActuel.getNom());
+			this.piecePlacee = joueurActuel.jouer(fenetre, this);
+			while(!piecePlacee){
+				try{
+					Thread.sleep(10);
+				} catch(InterruptedException e){
+					System.out.println("Erreur au sleep de Menu.java");
+				}
+			}
+			// On regarde si la fenêtre de chargement est ouverte. Si oui, on annule le tour
+			if(this.enregistrer!=null){
+				// On annule la sélection de la pièce
+				this.pieceSelectionee = null;
+				this.piecePlacee = false;
+				fenetre.maj(this.joueurActuel);
+
+				// On remet le joueur précédent
+				for(int i=0; i<4; i++)
+					if(joueurs[i]==joueurActuel){
+						if(i>0)
+							joueurActuel = joueurs[i-1];
+						else
+							joueurActuel = joueurs[3];
+						i=4;
+					}
+				// On met à jour l'affichage
+				fenetre.getPanelPieces().viderGrille();
+			}
+			// On vérifie que le joueur peut encore jouer
+			boolean resteDesPieces = false;
+			for(Piece piece : joueurActuel.getPieces())
+				if(piece != null)
+					if(piece.getPosition()[0]==-10 && piece.getPosition()[1]==-10)
+						resteDesPieces=true;
+			if(!resteDesPieces)
+				joueurActuel.abandonner();
+			
+			this.pieceSelectionee = null;
+		}
 	}
 
 	/**
@@ -192,7 +230,7 @@ public class Partie {
 	 */
 	public void enregistrer(){
 		this.enregistrer = new AfficherEnregistrement();
-		System.out.println(enregistrer.getNumero());
+		this.piecePlacee = true;
 	}
 
 	/**

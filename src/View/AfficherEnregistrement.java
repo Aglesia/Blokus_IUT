@@ -92,7 +92,7 @@ public class AfficherEnregistrement extends JFrame{
 		this.infosPartie2.setFont(police);
 
 		// Si le slot 0 n'est pas disponible, on grise le bouton
-		this.valider.setEnabled(Model.EnregistrerEtCharger.partieExiste(0));
+		this.valider.setEnabled(!Model.EnregistrerEtCharger.partieExiste(0));
 		majDescription();
 		
 		// On initialise la fenêtre et on l'affiche
@@ -115,7 +115,7 @@ public class AfficherEnregistrement extends JFrame{
 	 * Indique que l'utilisateur a appuyé sur "Retour"
 	 */
 	public void setRetour(){
-		this.numero = -1;
+		this.numero = -2;
 		this.valide = true;
 	}
 
@@ -150,7 +150,7 @@ public class AfficherEnregistrement extends JFrame{
 	 */
 	public int getNumero() {
 		if(!this.valide)
-			return -2;
+			return -1;
 		return this.numero;
 	}
 
