@@ -39,11 +39,11 @@ public class Fenetre extends JFrame{
 		affichageInfos = new Info(partie, affichagePlateau);
 		affichageBoutons = new BarreBoutons(partie, affichageInfos);
 		affichagePieces = new AfficherPieces(partie, affichageInfos);
-		
+
 		// On crée les layout et les panels associés
 		JPanel fond = new JPanel(new BorderLayout());
 		JPanel gauche = new JPanel(new BorderLayout());
-		
+
 		// On met en page les composants
 		this.add(fond);
 		fond.add(gauche, BorderLayout.WEST);
@@ -51,9 +51,9 @@ public class Fenetre extends JFrame{
 		gauche.add(affichageInfos, BorderLayout.NORTH);
 		gauche.add(affichagePieces);
 		gauche.add(affichageBoutons, BorderLayout.SOUTH);
-		
+
 		// On crée et initialise la fenêtre
-		this.setSize(945, 700);
+		this.setSize(1307, 867);//dimension prafaite sur ecran 1920*1080
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("BLOKUS");
 		this.setLocationRelativeTo(null);
@@ -87,7 +87,7 @@ public class Fenetre extends JFrame{
 	 * (A VIRER !!!) Easter Egg : Si le nom est "XXXX" , afficher une image spécifique à la place de la couleur
 	 * @param joueur Joueur à qui est le tour
 	 */
-	public void maj(Joueur joueur) {		
+	public void maj(Joueur joueur) {
 		affichageInfos.majJoueur(joueur);
 		affichagePieces.viderGrille();
 		affichagePieces.majPieces(joueur);
