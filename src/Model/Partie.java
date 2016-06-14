@@ -1,6 +1,7 @@
 package Model;
 import View.Fenetre;
 import java.awt.Color;
+import View.AfficherEnregistrement;
 
 /**
  * Gère la partie en cours, contient les différentes données de la partie et lance les différents tours
@@ -39,6 +40,10 @@ public class Partie {
 	 * Indique si la partie est finie ou à recommencer
 	 */
 	private int partieFinie;
+	/**
+	 * Fenêtre d'enregistrement si elle est ouverte
+	 */
+	private AfficherEnregistrement enregistrer;
 
 	/**
 	 * Crée une nouvelle partie, à partir des paramètres envoyés (le Menu)
@@ -85,6 +90,9 @@ public class Partie {
 	 *  - Attend que la pièce ai été placée/le tour a été passé
 	 */
 	public void jouer(Fenetre fenetre) {
+		if(this.enregistrer != null){
+
+		}
 		System.out.println("Tour suivant");
 		this.preparerTourSuivant(fenetre);
 		this.piecePlacee = joueurActuel.jouer(fenetre, this);
@@ -177,6 +185,14 @@ public class Partie {
 		if(this.partieEstGagnee()!=null)
 			this.partieFinie = 1;
 		return this.partieFinie;
+	}
+
+	/**
+	 * Enregistre la partie si le joueur le veut
+	 */
+	public void enregistrer(){
+		this.enregistrer = new AfficherEnregistrement();
+		System.out.println(enregistrer.getNumero());
 	}
 
 	/**

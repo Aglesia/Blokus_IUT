@@ -63,6 +63,10 @@ public class EvenementBoutonBarre implements ActionListener{
 				partie.pieceEstPlacee();
 			break;
 
+			case "Enregistrer":
+				partie.enregistrer();
+			break;
+
 			default:
 			break;
 		}
