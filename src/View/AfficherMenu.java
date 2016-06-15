@@ -66,7 +66,7 @@ public class AfficherMenu extends JFrame{
 		Bouton quitter = new Bouton("Quitter", "Quitter le jeu", null, event, police);
 		Bouton charger = new Bouton("Charger", "Charger partie", null, event, police);
 		// On crée les JSpinner
-		nbJoueurs = new SpinnerNumberModel(4, 1, 4, 1);
+		nbJoueurs = new SpinnerNumberModel(4, 0, 4, 1);
 		taillePlateau = new SpinnerNumberModel(21, 17, 25, 1);
 		JSpinner nombreJoueurs = new JSpinner(nbJoueurs);
 		JSpinner tailleDuPlateau = new JSpinner(taillePlateau);
