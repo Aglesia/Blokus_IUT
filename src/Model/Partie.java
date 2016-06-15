@@ -249,6 +249,13 @@ public class Partie implements Serializable{
 	}
 
 	/**
+	 * Indique au Main qu'on veut quitter d'urgence
+	 */
+	public void quitterWarning(){
+		this.partieFinie = 4;
+	}
+
+	/**
 	 * Retourne le plateau du jeu
 	 */
 	public Plateau getPlateau() {

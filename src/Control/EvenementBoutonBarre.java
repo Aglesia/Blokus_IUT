@@ -5,6 +5,7 @@ import java.awt.event.*;
 import View.Bouton;
 import View.Info;
 import javax.swing.JOptionPane;
+import Model.EnregistrerEtCharger;
 
 /**
  * Gère tous les boutons de la barre d'outils.
@@ -62,12 +63,22 @@ public class EvenementBoutonBarre implements ActionListener{
 			break;
 
 			case "Quitter":
-				partie.quitter();
+				partie.quitterWarning();
 				partie.pieceEstPlacee();
 			break;
 
 			case "Enregistrer":
 				partie.enregistrer();
+			break;
+
+			case "Warning":
+				for(int i=0; i<10; i++)
+					if(!EnregistrerEtCharger.partieExiste(i)){
+						EnregistrerEtCharger.enregistrer(i, partie);
+						i = 10;
+					}
+				partie.quitterWarning();
+				partie.pieceEstPlacee();
 			break;
 
 			default:

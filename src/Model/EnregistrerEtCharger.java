@@ -94,7 +94,6 @@ public class EnregistrerEtCharger implements Serializable{
 	 *  - Noms, couleurs et points des joueurs
 	 */
 	public String toString() {
-		System.out.println("EnregistrerEtCharger.toString n'est pas implémenté");
 		Menu menu = this.partie.getMenu();
 		int meilleur = 0;
 		for(int i=0; i<4; i++)
@@ -109,14 +108,6 @@ public class EnregistrerEtCharger implements Serializable{
 	 */
 	public static boolean partieExiste(int numero) {
 		return (EnregistrerEtCharger.ouvrir(numero)!=null);
-	}
-
-	/**
-	 * Enregistre la partie dans le premier emplacement libre
-	 * @param partie Partie en cours
-	 */
-	public static void enregistrementRapide(Partie partie) {
-		System.out.println("EnregistrerEtCharger.enregistrementRapide n'est pas implémenté");
 	}
 
 }

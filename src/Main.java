@@ -34,9 +34,10 @@ public class Main {
 
 			while(partie.partieTerminee()==0)
 				partie.jouer(fenetre);
-			new AfficherGagnant(partie.partieEstGagnee());
+			if(partie.partieTerminee()!=4)
+				new AfficherGagnant(partie.partieEstGagnee());
 			fenetre.dispose();
-			if(partie.partieTerminee()==3)
+			if(partie.partieTerminee()>2)
 				continuer = false;
 		}
 	}

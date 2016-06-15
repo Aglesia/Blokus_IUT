@@ -48,7 +48,7 @@ public class Menu implements Serializable{
 		this.nombreJoueurs = 4;
 		this.couleurs = new Color[4];
 		this.noms = new String[4];
-		this.tailleGrille = 20;
+		this.tailleGrille = 21;
 		this.menuAffiche = false;
 		this.chargementAffiche = false;
 		this.valeurChargement = -2;
