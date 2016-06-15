@@ -1,4 +1,11 @@
 package Model;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.Serializable;
 
 /**
  * Permet d'enregistrer et de charger une partie.
@@ -6,7 +13,7 @@ package Model;
  * Le reste de la classe est l'objet qui contient toutes les infos de la partie, et qui est enregistré dans un fichier binaire.
  * Pour charger une partie, il faut l'ouvrir via la méthode statique, puis la charger via la méthode de l'objet.
  */
-public class EnregistrerEtCharger {
+public class EnregistrerEtCharger implements Serializable{
 
 	/**
 	 * Partie à charger
@@ -19,7 +26,50 @@ public class EnregistrerEtCharger {
 	 * @param partie Partie en cours
 	 */
 	public static void enregistrer(int numero, Partie partie) {
-		System.out.println("EnregistrerEtCharger.enregistrer n'est pas implémenté");
+		EnregistrerEtCharger objet = new EnregistrerEtCharger(partie);
+		ObjectOutputStream fichier = null;
+		try{
+			fichier = new ObjectOutputStream(new FileOutputStream("../data/saves/"+numero+".save"));
+			fichier.writeObject(objet);
+		} catch (IOException e){
+			e.printStackTrace();
+		} finally {
+			try {
+				if (fichier != null) {
+					fichier.flush();
+					fichier.close();
+				}
+			} catch (final IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * Ouvre une partie enregistrée et retour son objet EnregistrerEtCharger. Peut retourner null si la partie n'est pas trouvée
+	 * @param      numero  Le numéro de la partie à charger
+	 */
+	public static EnregistrerEtCharger ouvrir(int numero){
+		EnregistrerEtCharger objet = null;
+		ObjectInputStream fichier = null;
+		try{
+			fichier = new ObjectInputStream(new FileInputStream("../data/saves/"+numero+".save"));
+			objet = (EnregistrerEtCharger)fichier.readObject();
+		} catch(FileNotFoundException e){
+			fichier = null;
+		} catch(ClassNotFoundException e){
+			System.out.println("Le fichier de sauvegarde n'est pas valide");
+		} catch (IOException e){
+			e.printStackTrace();
+		} finally {
+			try {
+				if (fichier != null)
+					fichier.close();
+			} catch (final IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return objet;
 	}
 
 	/**
@@ -27,16 +77,15 @@ public class EnregistrerEtCharger {
 	 * Retourne null si aucune partie n'est trouvée
 	 * @param numero Numéro de la partie à ouvrir
 	 */
-	public EnregistrerEtCharger(int numero) {
-		System.out.println("EnregistrerEtCharger.ouvrir n'est pas implémenté");
+	public EnregistrerEtCharger(Partie partie) {
+		this.partie = partie;
 	}
 
 	/**
 	 * Place la partie ouverte en tant que partie en cours (Charge la partie)
 	 */
 	public Partie charger() {
-		System.out.println("EnregistrerEtCharger.charger n'est pas implémenté");
-		return null;
+		return this.partie;
 	}
 
 	/**
@@ -46,7 +95,12 @@ public class EnregistrerEtCharger {
 	 */
 	public String toString() {
 		System.out.println("EnregistrerEtCharger.toString n'est pas implémenté");
-		return "4 joueurs, plateau de 21*21\nA le plus de points actuellement (20) : Dorian";
+		Menu menu = this.partie.getMenu();
+		int meilleur = 0;
+		for(int i=0; i<4; i++)
+			if(this.partie.getJoueurs()[i].getNombrePoints()>meilleur)
+				meilleur = this.partie.getJoueurs()[i].getNombrePoints();
+		return menu.getNombreJoueurs()+" joueurs, plateau de "+menu.getTaille()+"*"+menu.getTaille()+"\nNombre de points du meilleur joueur : "+meilleur;
 	}
 
 	/**
@@ -54,7 +108,7 @@ public class EnregistrerEtCharger {
 	 * @param numero Emplacement à vérifier
 	 */
 	public static boolean partieExiste(int numero) {
-		return (numero == 2);
+		return (EnregistrerEtCharger.ouvrir(numero)!=null);
 	}
 
 	/**

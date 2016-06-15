@@ -6,6 +6,7 @@ import View.AfficherEnregistrement;
 import java.awt.event.*;
 import javax.swing.JColorChooser;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  * Gère tous les boutons du menu
@@ -19,7 +20,6 @@ public class EvenementBoutonMenuEnregistrement implements ActionListener{
 	/**
 	 * Crée un évènement pour gérer les boutons du menu.
 	 * Les autres objets du menus ne sont pas dynamiques
-	 * @param menu    Menu à utiliser et à paramétrer
 	 * @param fenetre Fenetre du menu
 	 */
 	public EvenementBoutonMenuEnregistrement(AfficherEnregistrement fenetre) {
@@ -35,7 +35,12 @@ public class EvenementBoutonMenuEnregistrement implements ActionListener{
 		String nom = bouton.getNom();
 
 		if(nom.equals("Enregistrer")){
-			fenetre.setValide();
+			if(bouton.getText().equals("Remplacer")){
+				if(JOptionPane.showConfirmDialog (null, "Êtes-vous sûr de vouloir écraser cette sauvegarde ?", "Remplacer une sauvegarde", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+					fenetre.setValide();
+			}
+			else
+				fenetre.setValide();
 		}
 		else if(nom.equals("Retour")){
 			fenetre.setRetour();

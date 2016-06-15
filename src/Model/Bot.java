@@ -1,8 +1,9 @@
 package Model;
 import java.awt.Color;
 import View.Fenetre;
+import java.io.Serializable;
 
-public class Bot extends Joueur{
+public class Bot extends Joueur {
 	/**
 	 * Crée un nouveau bot avec un nom et une couleur
 	 * @param nom Nom du joueur

@@ -1,10 +1,11 @@
 package Model;
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * Plateau contenant les différentes pièces placées.
  */
-public class Plateau {
+public class Plateau implements Serializable{
 
 	/**
 	 * Matrice des cases, Une case contient soit null, soit la piece qui y est placé

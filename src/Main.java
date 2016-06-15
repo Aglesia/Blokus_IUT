@@ -16,7 +16,8 @@ public class Main {
 		while(continuer){
 			Partie partie = null;
 			Menu menu = new Menu();
-			switch(menu.afficherMenu()){
+			int numero = menu.afficherMenu();
+			switch(numero){
 				case -1:
 					partie = new Partie(menu);
 					break;
@@ -25,7 +26,7 @@ public class Main {
 					return;
 
 				default:
-					partie = new Partie(menu); //// A REMPLACER !! ///////////
+					partie = EnregistrerEtCharger.ouvrir(numero).charger();
 				break;
 			}
 

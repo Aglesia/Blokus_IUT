@@ -137,9 +137,11 @@ public class AfficherChargement extends JFrame{
 	 */
 	private void majDescription(){
 		if(Model.EnregistrerEtCharger.partieExiste(this.numero)){
-			EnregistrerEtCharger charge = new EnregistrerEtCharger(this.numero);
-			this.infosPartie.setText(charge.toString().substring(0, charge.toString().indexOf("\n")));
-			this.infosPartie2.setText(charge.toString().substring(charge.toString().indexOf("\n")));
+			EnregistrerEtCharger charge = EnregistrerEtCharger.ouvrir(this.numero);
+			if(charge != null){
+				this.infosPartie.setText(charge.toString().substring(0, charge.toString().indexOf("\n")));
+				this.infosPartie2.setText(charge.toString().substring(charge.toString().indexOf("\n")));
+			}
 		}
 		else{
 			this.infosPartie.setText("");

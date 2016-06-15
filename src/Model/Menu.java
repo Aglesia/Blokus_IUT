@@ -1,11 +1,12 @@
 package Model;
 import View.*;
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * Stocke les différents paramètres de la partie, et affiche un menu permettant de les modifier
  */
-public class Menu {
+public class Menu implements Serializable{
 
 	/**
 	 * Nombre de joueurs pour cette partie

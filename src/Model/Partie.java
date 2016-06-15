@@ -2,11 +2,12 @@ package Model;
 import View.Fenetre;
 import java.awt.Color;
 import View.AfficherEnregistrement;
+import java.io.Serializable;
 
 /**
  * Gère la partie en cours, contient les différentes données de la partie et lance les différents tours
  */
-public class Partie {
+public class Partie implements Serializable{
 
 	/**
 	 * Plateau de la partie, sur lequel il y a les pièces posées

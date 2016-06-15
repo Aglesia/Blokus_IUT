@@ -1,11 +1,12 @@
 package Model;
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * Toutes les données d'une pièce sont incluses ici :
  * Sa position sur le plateau, sa matrice, son orientation et sa couleur (joueur à qui appartient la pièce)
  */
-public class Piece {
+public class Piece implements Serializable{
 
 	/**
 	 * Position sur le plateau, de la case 0,0 de la matrice (en tenant compte de l'orientation).

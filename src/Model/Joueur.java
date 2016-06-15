@@ -1,11 +1,12 @@
 package Model;
 import java.awt.Color;
 import View.Fenetre;
+import java.io.Serializable;
 
 /**
  * Données d'un joueur, avec son nom, sa couleur, ses pièces, ses points.
  */
-public class Joueur {
+public class Joueur implements Serializable{
 
 	/**
 	 * Les différentes pièces du joueur. La dernière pièce est toujours null

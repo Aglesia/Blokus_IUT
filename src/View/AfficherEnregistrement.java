@@ -92,7 +92,10 @@ public class AfficherEnregistrement extends JFrame{
 		this.infosPartie2.setFont(police);
 
 		// Si le slot 0 n'est pas disponible, on grise le bouton
-		this.valider.setEnabled(!Model.EnregistrerEtCharger.partieExiste(0));
+		if(Model.EnregistrerEtCharger.partieExiste(0))
+			this.valider.setText("Remplacer");
+		else
+			this.valider.setText("Valider");
 		majDescription();
 		
 		// On initialise la fenêtre et on l'affiche
@@ -128,7 +131,10 @@ public class AfficherEnregistrement extends JFrame{
 		if(this.numero<0)
 			this.numero = 9;
 		this.numeroPartie.setText("SLOT : "+numero);
-		this.valider.setEnabled(!Model.EnregistrerEtCharger.partieExiste(this.numero));
+		if(Model.EnregistrerEtCharger.partieExiste(this.numero))
+			this.valider.setText("Remplacer");
+		else
+			this.valider.setText("Valider");
 		majDescription();
 	}
 
@@ -141,7 +147,10 @@ public class AfficherEnregistrement extends JFrame{
 		if(this.numero>9)
 			this.numero = 0;
 		this.numeroPartie.setText("SLOT : "+numero);
-		this.valider.setEnabled(!Model.EnregistrerEtCharger.partieExiste(this.numero));
+		if(Model.EnregistrerEtCharger.partieExiste(this.numero))
+			this.valider.setText("Remplacer");
+		else
+			this.valider.setText("Valider");
 		majDescription();
 	}
 
@@ -159,9 +168,11 @@ public class AfficherEnregistrement extends JFrame{
 	 */
 	private void majDescription(){
 		if(Model.EnregistrerEtCharger.partieExiste(this.numero)){
-			EnregistrerEtCharger charge = new EnregistrerEtCharger(this.numero);
-			this.infosPartie.setText(charge.toString().substring(0, charge.toString().indexOf("\n")));
-			this.infosPartie2.setText(charge.toString().substring(charge.toString().indexOf("\n")));
+			EnregistrerEtCharger charge = EnregistrerEtCharger.ouvrir(this.numero);
+			if(charge != null){
+				this.infosPartie.setText(charge.toString().substring(0, charge.toString().indexOf("\n")));
+				this.infosPartie2.setText(charge.toString().substring(charge.toString().indexOf("\n")));
+			}
 		}
 		else{
 			this.infosPartie.setText("");
