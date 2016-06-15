@@ -66,26 +66,26 @@ public class AfficherMenu extends JFrame{
 		Bouton quitter = new Bouton("Quitter", "Quitter le jeu", null, event, police);
 		Bouton charger = new Bouton("Charger", "Charger partie", null, event, police);
 		// On crée les JSpinner
-		nbJoueurs = new SpinnerNumberModel(4, 0, 4, 1);
-		taillePlateau = new SpinnerNumberModel(21, 17, 25, 1);
+		nbJoueurs = new SpinnerNumberModel(menu.getNombreJoueurs(), 0, 4, 1);
+		taillePlateau = new SpinnerNumberModel(menu.getTaille(), 17, 25, 1);
 		JSpinner nombreJoueurs = new JSpinner(nbJoueurs);
 		JSpinner tailleDuPlateau = new JSpinner(taillePlateau);
 		nombreJoueurs.setFont(police);
 		tailleDuPlateau.setFont(police);
 		// On crée les JTextField
-		nom1 = new JTextField("Joueur 1");
-		nom2 = new JTextField("Joueur 2");
-		nom3 = new JTextField("Joueur 3");
-		nom4 = new JTextField("Joueur 4");
+		nom1 = new JTextField(menu.getNoms()[0]);
+		nom2 = new JTextField(menu.getNoms()[1]);
+		nom3 = new JTextField(menu.getNoms()[2]);
+		nom4 = new JTextField(menu.getNoms()[3]);
 		nom1.setFont(police);
 		nom2.setFont(police);
 		nom3.setFont(police);
 		nom4.setFont(police);
 		// On crée les JColorChooser
-		couleurJ1 = new JColorChooser(new Color(255, 0, 0));
-		couleurJ2 = new JColorChooser(new Color(0, 255, 0));
-		couleurJ3 = new JColorChooser(new Color(0, 0, 255));
-		couleurJ4 = new JColorChooser(new Color(255, 255, 0));
+		couleurJ1 = new JColorChooser(menu.getCouleurs()[0]);
+		couleurJ2 = new JColorChooser(menu.getCouleurs()[1]);
+		couleurJ3 = new JColorChooser(menu.getCouleurs()[2]);
+		couleurJ4 = new JColorChooser(menu.getCouleurs()[3]);
 
 		// On crée la fenêtre
 		this.setSize(800, 600);

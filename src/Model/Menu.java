@@ -92,6 +92,9 @@ public class Menu implements Serializable{
 		return this.valeurChargement;
 	}
 
+	/**
+	 * Indique si la fenêtre de menu est ouverte
+	 */
 	private boolean menuEstOuvert(){
 		try{
 			Thread.sleep(10);
@@ -102,6 +105,9 @@ public class Menu implements Serializable{
 		}
 	}
 
+	/**
+	 * Indique si la fenêtre de chargement d'une partie est ouverte
+	 */
 	private boolean fenetreChargementEstOuverte(){
 		try{
 			Thread.sleep(10);

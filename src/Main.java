@@ -13,9 +13,9 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		boolean continuer = true;
+		Menu menu = new Menu();
 		while(continuer){
 			Partie partie = null;
-			Menu menu = new Menu();
 			int numero = menu.afficherMenu();
 			switch(numero){
 				case -1:
