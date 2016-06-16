@@ -74,21 +74,21 @@ public class BarreBoutons extends JPanel{
 	 */
 	public BarreBoutons(Partie partie, Info info) {
 		EvenementBoutonBarre event = new EvenementBoutonBarre(partie, info);
-		boutonInverser = new Bouton("Inverser", null, new ImageIcon("../data/images/inverser.png"), event, null);
-		boutonTourner = new Bouton("Tourner", null, new ImageIcon("../data/images/rotation.png"), event, null);
-		boutonEnregistrer = new Bouton("Enregistrer", null, new ImageIcon("../data/images/enregistrer.png"), event, null);
-		boutonNouveau = new Bouton("Nouveau", null, new ImageIcon("../data/images/nouveau.png"), event, null);
-		boutonWarningProf = new Bouton("Warning", null, new ImageIcon("../data/images/warning.png"), event, null);
-		boutonAbandonner = new Bouton("Abandonner", null, new ImageIcon("../data/images/abandon.png"), event, null);
-		boutonQuitter = new Bouton("Quitter", null, new ImageIcon("../data/images/quitter.png"), event, null);
+		boutonInverser = new Bouton("Inverser", null, new ImageIcon("../Ressources/inverser.png"), event, null);
+		boutonTourner = new Bouton("Tourner", null, new ImageIcon("../Ressources/rotation.png"), event, null);
+		boutonEnregistrer = new Bouton("Enregistrer", null, new ImageIcon("../Ressources/enregistrer.png"), event, null);
+		boutonNouveau = new Bouton("Nouveau", null, new ImageIcon("../Ressources/nouveau.png"), event, null);
+		boutonWarningProf = new Bouton("Warning", null, new ImageIcon("../Ressources/warning.png"), event, null);
+		boutonAbandonner = new Bouton("Abandonner", null, new ImageIcon("../Ressources/abandon.png"), event, null);
+		boutonQuitter = new Bouton("Quitter", null, new ImageIcon("../Ressources/quitter.png"), event, null);
 
-		imageInverser = (new ImageIcon("../data/images/inverser.png")).getImage();
-		imageTourner = (new ImageIcon("../data/images/rotation.png")).getImage();
-		imageEnregistrer = (new ImageIcon("../data/images/enregistrer.png")).getImage();
-		imageNouveau = (new ImageIcon("../data/images/nouveau.png")).getImage();
-		imageWarningProf = (new ImageIcon("../data/images/warning.png")).getImage();
-		imageAbandonner = (new ImageIcon("../data/images/abandon.png")).getImage();
-		imageQuitter = (new ImageIcon("../data/images/quitter.png")).getImage();
+		imageInverser = (new ImageIcon("../Ressources/inverser.png")).getImage();
+		imageTourner = (new ImageIcon("../Ressources/rotation.png")).getImage();
+		imageEnregistrer = (new ImageIcon("../Ressources/enregistrer.png")).getImage();
+		imageNouveau = (new ImageIcon("../Ressources/nouveau.png")).getImage();
+		imageWarningProf = (new ImageIcon("../Ressources/warning.png")).getImage();
+		imageAbandonner = (new ImageIcon("../Ressources/abandon.png")).getImage();
+		imageQuitter = (new ImageIcon("../Ressources/quitter.png")).getImage();
 
 		this.setLayout(new GridLayout(0, 7));
 		this.setBackground(partie.getPlateau().getBackground());
