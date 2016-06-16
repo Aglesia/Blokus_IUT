@@ -134,6 +134,7 @@ public class AfficherMenu extends JFrame{
 		this.setSize(800, 600);
 		this.setLocationRelativeTo(null);
 		this.setBackground(couleurFond);
+		this.setIconImage((new ImageIcon("../data/images/iconeFenetre.png")).getImage());
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

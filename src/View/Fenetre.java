@@ -75,6 +75,7 @@ public class Fenetre extends JFrame{
 		this.setSize(tailleX+getContentPane().getWidth(), tailleY+getContentPane().getHeight());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("BLOKUS");
+		this.setIconImage((new ImageIcon("../data/images/iconeFenetre.png")).getImage());
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 
