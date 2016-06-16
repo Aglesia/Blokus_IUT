@@ -30,10 +30,11 @@ public class Main {
 				break;
 			}
 
-			Fenetre fenetre = new Fenetre(partie, EnsemblePieces.pieces());
+			Fenetre fenetre = new Fenetre(partie, EnsemblePieces.pieces(), 1000, 700);
 
 			while(partie.partieTerminee()==0)
 				partie.jouer(fenetre);
+			fenetre.maj(partie.getJoueurActuel());
 			if(partie.partieTerminee()!=4)
 				new AfficherGagnant(partie.partieEstGagnee());
 			fenetre.dispose();

@@ -57,26 +57,34 @@ public class EvenementBoutonMenu implements ActionListener{
 		else if(nom.equals("Couleur1")){
 			JColorChooser model = fenetre.changerCouleur(1);
 			Color nouvelleCouleur = model.showDialog(fenetre, "Choix d'une couleur", model.getColor());
-			if(nouvelleCouleur!=null)
+			if(nouvelleCouleur!=null){
 				model.setColor(nouvelleCouleur);
+				bouton.setForeground(nouvelleCouleur);
+			}
 		}
 		else if(nom.equals("Couleur2")){
 			JColorChooser model = fenetre.changerCouleur(2);
 			Color nouvelleCouleur = model.showDialog(fenetre, "Choix d'une couleur", model.getColor());
-			if(nouvelleCouleur!=null)
+			if(nouvelleCouleur!=null){
 				model.setColor(nouvelleCouleur);
+				bouton.setForeground(nouvelleCouleur);
+			}
 		}
 		else if(nom.equals("Couleur3")){
 			JColorChooser model = fenetre.changerCouleur(3);
 			Color nouvelleCouleur = model.showDialog(fenetre, "Choix d'une couleur", model.getColor());
-			if(nouvelleCouleur!=null)
+			if(nouvelleCouleur!=null){
 				model.setColor(nouvelleCouleur);
+				bouton.setForeground(nouvelleCouleur);
+			}
 		}
 		else if(nom.equals("Couleur4")){
 			JColorChooser model = fenetre.changerCouleur(4);
 			Color nouvelleCouleur = model.showDialog(fenetre, "Choix d'une couleur", model.getColor());
-			if(nouvelleCouleur!=null)
+			if(nouvelleCouleur!=null){
 				model.setColor(nouvelleCouleur);
+				bouton.setForeground(nouvelleCouleur);
+			}
 		}
 
 	}

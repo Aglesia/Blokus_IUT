@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Font;
+import java.awt.Component;
 import javax.swing.*;
 
 /**
@@ -87,9 +88,52 @@ public class AfficherMenu extends JFrame{
 		couleurJ3 = new JColorChooser(menu.getCouleurs()[2]);
 		couleurJ4 = new JColorChooser(menu.getCouleurs()[3]);
 
+		// On applique un Dark theme
+		Color couleurFond = new Color(69, 69, 69);
+		Color couleurTexte = new Color(242, 242, 242);
+		valider.setBackground(couleurFond);
+		valider.setForeground(couleurTexte);
+		quitter.setBackground(couleurFond);
+		quitter.setForeground(couleurTexte);
+		charger.setBackground(couleurFond);
+		charger.setForeground(couleurTexte);
+		nombreJoueurs.setBackground(couleurFond);
+		nombreJoueurs.setForeground(couleurTexte);
+		tailleDuPlateau.setBackground(couleurFond);
+		tailleDuPlateau.setForeground(couleurTexte);
+		nom1.setBackground(couleurFond);
+		nom1.setForeground(couleurTexte);
+		nom2.setBackground(couleurFond);
+		nom2.setForeground(couleurTexte);
+		nom3.setBackground(couleurFond);
+		nom3.setForeground(couleurTexte);
+		nom4.setBackground(couleurFond);
+		nom4.setForeground(couleurTexte);
+		nom1.setHorizontalAlignment(JLabel.CENTER);
+		nom2.setHorizontalAlignment(JLabel.CENTER);
+		nom3.setHorizontalAlignment(JLabel.CENTER);
+		nom4.setHorizontalAlignment(JLabel.CENTER);
+
+		int n = nombreJoueurs.getComponentCount();
+	    for (int i=0; i<n; i++)
+	    {
+	        Component c = nombreJoueurs.getComponent(i);
+            c.setForeground(couleurTexte);
+            c.setBackground(couleurFond);
+	    }
+
+	    n = tailleDuPlateau.getComponentCount();
+	    for (int i=0; i<n; i++)
+	    {
+	        Component c = tailleDuPlateau.getComponent(i);
+            c.setForeground(couleurTexte);
+            c.setBackground(couleurFond);
+	    }
+
 		// On crée la fenêtre
 		this.setSize(800, 600);
 		this.setLocationRelativeTo(null);
+		this.setBackground(couleurFond);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -99,6 +143,15 @@ public class AfficherMenu extends JFrame{
 		JPanel boutonsBas = new JPanel(new GridLayout(0, 2));
 		JPanel haut = new JPanel(new GridLayout(0, 2));
 
+		fond.setBackground(couleurFond);
+		fond.setForeground(couleurTexte);
+		boutons.setBackground(couleurFond);
+		boutons.setForeground(couleurTexte);
+		boutonsBas.setBackground(couleurFond);
+		boutonsBas.setForeground(couleurTexte);
+		haut.setBackground(couleurFond);
+		haut.setForeground(couleurTexte);
+
 		// On remplie les panels
 		fond.add(haut, BorderLayout.CENTER);
 		fond.add(boutons, BorderLayout.SOUTH);
@@ -106,26 +159,82 @@ public class AfficherMenu extends JFrame{
 		boutons.add(boutonsBas, BorderLayout.CENTER);
 		boutonsBas.add(quitter);
 		boutonsBas.add(valider);
-		haut.add(new JLabel("Nombre de joueurs : "));
+		JComponent temp = new JLabel("Nombre de joueurs : ");
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurTexte);
+		temp.setFont(police);
+		haut.add(temp);
 		haut.add(nombreJoueurs);
-		haut.add(new JLabel("Taille du plateau : "));
+		temp = new JLabel("Taille du plateau : ");
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurTexte);
+		temp.setFont(police);
+		haut.add(temp);
 		haut.add(tailleDuPlateau);
-		haut.add(new JLabel("Nom joueur 1 : "));
+		temp = new JLabel("Nom joueur 1");
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurTexte);
+		temp.setFont(police);
+		haut.add(temp);
 		haut.add(nom1);
-		haut.add(new JLabel("Nom joueur 2 : "));
+		temp = new JLabel("Nom joueur 2");
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurTexte);
+		temp.setFont(police);
+		haut.add(temp);
 		haut.add(nom2);
-		haut.add(new JLabel("Nom joueur 3 : "));
+		temp = new JLabel("Nom joueur 3");
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurTexte);
+		temp.setFont(police);
+		haut.add(temp);
 		haut.add(nom3);
-		haut.add(new JLabel("Nom joueur 4 : "));
+		temp = new JLabel("Nom joueur 4");
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurTexte);
+		temp.setFont(police);
+		haut.add(temp);
 		haut.add(nom4);
-		haut.add(new JLabel("Couleur joueur 1 : "));
-		haut.add(new Bouton("Couleur1", "Changer Couleur", null, event, police));
-		haut.add(new JLabel("Couleur joueur 2 : "));
-		haut.add(new Bouton("Couleur2", "Changer Couleur", null, event, police));
-		haut.add(new JLabel("Couleur joueur 3 : "));
-		haut.add(new Bouton("Couleur3", "Changer Couleur", null, event, police));
-		haut.add(new JLabel("Couleur joueur 4 : "));
-		haut.add(new Bouton("Couleur4", "Changer Couleur", null, event, police));
+		temp = new JLabel("Couleur joueur 1");
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurTexte);
+		temp.setFont(police);
+		haut.add(temp);
+		temp = new Bouton("Couleur1", "Changer Couleur", null, event, police);
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurJ1.getColor());
+		temp.setFont(police);
+		haut.add(temp);
+		temp = new JLabel("Couleur joueur 2");
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurTexte);
+		temp.setFont(police);
+		haut.add(temp);
+		temp = new Bouton("Couleur2", "Changer Couleur", null, event, police);
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurJ2.getColor());
+		temp.setFont(police);
+		haut.add(temp);
+		temp = new JLabel("Couleur joueur 3");
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurTexte);
+		temp.setFont(police);
+		haut.add(temp);
+		temp = new Bouton("Couleur3", "Changer Couleur", null, event, police);
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurJ3.getColor());
+		temp.setFont(police);
+		haut.add(temp);
+		temp = new JLabel("Couleur joueur 4");
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurTexte);
+		temp.setFont(police);
+		haut.add(temp);
+		temp = new Bouton("Couleur4", "Changer Couleur", null, event, police);
+		temp.setBackground(couleurFond);
+		temp.setForeground(couleurJ4.getColor());
+		temp.setFont(police);
+		haut.add(temp);
 		this.add(fond);
 	}
 

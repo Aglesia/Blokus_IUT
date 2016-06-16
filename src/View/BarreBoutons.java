@@ -39,6 +39,34 @@ public class BarreBoutons extends JPanel{
 	 * Bouton permettant au joueur d'abandonner
 	 */
 	private Bouton boutonAbandonner;
+	/**
+	 * icone du bouton pour inverser le sens de la pièce
+	 */
+	private Image imageInverser;
+	/**
+	 * icone du bouton permettant de tourner la pièce de 90°
+	 */
+	private Image imageTourner;
+	/**
+	 * icone du bermet d'ouvrir le menu d'enregistrement de la partie
+	 */
+	private Image imageEnregistrer;
+	/**
+	 * icone du bouton permettant de remettre la partie à 0
+	 */
+	private Image imageNouveau;
+	/**
+	 * icone du bouton permettant d'enregistrer très rapidement la partie dans le premier slot disponible, et de quitter le jeu (Quand le prof arrive)
+	 */
+	private Image imageWarningProf;
+	/**
+	 * icone du bouton permettant de quitter le jeu (n'enregistre pas la partie)
+	 */
+	private Image imageQuitter;
+	/**
+	 * icone du bouton permettant au joueur d'abandonner
+	 */
+	private Image imageAbandonner;
 
 	/**
 	 * Crée une barre de boutons de menu
@@ -54,7 +82,16 @@ public class BarreBoutons extends JPanel{
 		boutonAbandonner = new Bouton("Abandonner", null, new ImageIcon("../data/images/abandon.png"), event, null);
 		boutonQuitter = new Bouton("Quitter", null, new ImageIcon("../data/images/quitter.png"), event, null);
 
+		imageInverser = (new ImageIcon("../data/images/inverser.png")).getImage();
+		imageTourner = (new ImageIcon("../data/images/rotation.png")).getImage();
+		imageEnregistrer = (new ImageIcon("../data/images/enregistrer.png")).getImage();
+		imageNouveau = (new ImageIcon("../data/images/nouveau.png")).getImage();
+		imageWarningProf = (new ImageIcon("../data/images/warning.png")).getImage();
+		imageAbandonner = (new ImageIcon("../data/images/abandon.png")).getImage();
+		imageQuitter = (new ImageIcon("../data/images/quitter.png")).getImage();
+
 		this.setLayout(new GridLayout(0, 7));
+		this.setBackground(partie.getPlateau().getBackground());
 		this.add(boutonInverser);
 		this.add(boutonTourner);
 		this.add(boutonAbandonner);
@@ -71,6 +108,23 @@ public class BarreBoutons extends JPanel{
 		boutonNouveau.setBackground(partie.getPlateau().getBackground());
 		boutonWarningProf.setBackground(partie.getPlateau().getBackground());
 		boutonQuitter.setBackground(partie.getPlateau().getBackground());
+	}
+
+	/**
+	 * Redimensionne les icones des boutons selon la taille des boutons
+	 */
+	public void majTaille(){
+		int taille = (boutonInverser.getWidth()<boutonInverser.getHeight())?boutonInverser.getWidth():boutonInverser.getHeight();
+		taille-=4;
+
+
+		boutonInverser.setIcon(new ImageIcon(imageInverser.getScaledInstance(taille, taille, Image.SCALE_SMOOTH)));
+		boutonTourner.setIcon(new ImageIcon(imageTourner.getScaledInstance(taille, taille, Image.SCALE_SMOOTH)));
+		boutonAbandonner.setIcon(new ImageIcon(imageAbandonner.getScaledInstance(taille, taille, Image.SCALE_SMOOTH)));
+		boutonEnregistrer.setIcon(new ImageIcon(imageEnregistrer.getScaledInstance(taille, taille, Image.SCALE_SMOOTH)));
+		boutonNouveau.setIcon(new ImageIcon(imageNouveau.getScaledInstance(taille, taille, Image.SCALE_SMOOTH)));
+		boutonWarningProf.setIcon(new ImageIcon(imageWarningProf.getScaledInstance(taille, taille, Image.SCALE_SMOOTH)));
+		boutonQuitter.setIcon(new ImageIcon(imageQuitter.getScaledInstance(taille, taille, Image.SCALE_SMOOTH)));
 	}
 
 }
