@@ -45,7 +45,6 @@ public class AfficherEnregistrement extends JFrame{
 
 	/**
 	 * Crée une fenêtre pour gérer le chargement d'une partie
-	 * @param menu Menu à utiliser pour stocket les données de la fenêtre
 	 */
 	public AfficherEnregistrement() {
 		// On crée les écouteurs

@@ -99,6 +99,9 @@ public class Fenetre extends JFrame{
 		});
 	}
 
+	/**
+	 * Met à jour la taille de tous les composants de la fenêtre, selon la nouvelle taille de la fenêtre
+	 */
 	public void majTaille(){
 		// On laisse le temps à la fenêtre de se redimensionner
 		try{
@@ -142,25 +145,36 @@ public class Fenetre extends JFrame{
 
 	}
 
+	/**
+	 * Retourne le panel gérant les infos de la partie
+	 */
 	public Info getPanelInfo(){
 		return this.affichageInfos;
 	}
 
+	/**
+	 * Retourne le panel gérant le plateau
+	 */
 	public AfficherPlateau getPanelPlateau(){
 		return this.affichagePlateau;
 	}
 
+	/**
+	 * Retourne le panel gérant les boutons de menu
+	 */
 	public BarreBoutons getPanelBoutons(){
 		return this.affichageBoutons;
 	}
 
+	/**
+	 * Retourne le panel gérant la sélection des pièces
+	 */
 	public AfficherPieces getPanelPieces(){
 		return this.affichagePieces;
 	}
 
 	/**
 	 * Met à jour la couleur et le nom du joueur actuel.
-	 * (A VIRER !!!) Easter Egg : Si le nom est "XXXX" , afficher une image spécifique à la place de la couleur
 	 * @param joueur Joueur à qui est le tour
 	 */
 	public void maj(Joueur joueur) {

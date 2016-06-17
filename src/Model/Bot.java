@@ -3,6 +3,9 @@ import java.awt.Color;
 import View.Fenetre;
 import java.io.Serializable;
 
+/**
+ * Bot remplaçant un joueur, s'il y a moins de 4 joueurs physique
+ */
 public class Bot extends Joueur {
 	/**
 	 * Crée un nouveau bot avec un nom et une couleur
@@ -90,28 +93,3 @@ public class Bot extends Joueur {
 		return true;
 	}
 }
-
-
-// for(int l=0; l<4; l++){
-// 	this.getPieces()[p].setOrientationDroite();
-// 	for(int i=-7; i<partie.getPlateau().getTaille(); i++)
-// 		for(int j=-7; j<partie.getPlateau().getTaille(); j++)
-// 			if(this.getPieces()[p].piecePosable(partie.getPlateau(), new int[]{i, j}))
-// 				if(this.getPieces()[p].getNombrePoints()>nombrePointsMax){
-// 					nombrePointsMax = this.getPieces()[p].getNombrePoints();
-// 					pieceMax = this.getPieces()[p];
-// 					positionMax = new int[]{i, j};
-// 				}
-// }
-// this.getPieces()[p].inverserSens();
-// for(int l=0; l<4; l++){
-// 	this.getPieces()[p].setOrientationDroite();
-// 	for(int i=-7; i<partie.getPlateau().getTaille(); i++)
-// 		for(int j=-7; j<partie.getPlateau().getTaille(); j++)
-// 			if(this.getPieces()[p].piecePosable(partie.getPlateau(), new int[]{i, j}))
-// 				if(this.getPieces()[p].getNombrePoints()>nombrePointsMax){
-// 					nombrePointsMax = this.getPieces()[p].getNombrePoints();
-// 					pieceMax = this.getPieces()[p];
-// 					positionMax = new int[]{i, j};
-// 				}
-// }

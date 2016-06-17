@@ -32,7 +32,7 @@ public class AfficherPlateau extends JPanel{
 	/**
 	 * Crée un plateau graphique et tous les boutons nécessaires à son bon fonctionnement
 	 * @param partie Partie en cours, pour avoir la taille du plateau, le plateau lui-même et les autres paramètres de la partie
-	 * @param plateau Le plateau sur lequel placer les pièces
+	 * @param fenetre La fenêtre contenant tous les composants graphiques
 	 */
 	public AfficherPlateau(Partie partie, Fenetre fenetre) {
 		matriceBouton = new Bouton[partie.getPlateau().getTaille()][partie.getPlateau().getTaille()];

@@ -26,7 +26,8 @@ public class Info extends JPanel{
 
 	/**
 	 * Crée un nouveau panel d'infos, avec tous les objets graphiques nécessaires
-	 * @param joueurs Liste des joueurs
+	 * @param partie Partie en cours
+	 * @param plateau Plateau graphique de la fenêtre, 
 	 */
 	public Info(Partie partie, AfficherPlateau plateau) {
 		this.plateau = plateau;

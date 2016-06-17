@@ -73,9 +73,8 @@ public class EnregistrerEtCharger implements Serializable{
 	}
 
 	/**
-	 * Charge une partie enregistrée sous un certain numéro de partie, et la retourne
-	 * Retourne null si aucune partie n'est trouvée
-	 * @param numero Numéro de la partie à ouvrir
+	 * Crée un objet EnregistrerEtCharger, permettant ensuite de charger la partie qu'il contient, ou d'afficher les infos de cette dernière
+	 * @param partie Partie chargée, à mettre dans l'objet
 	 */
 	public EnregistrerEtCharger(Partie partie) {
 		this.partie = partie;

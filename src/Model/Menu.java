@@ -120,8 +120,6 @@ public class Menu implements Serializable{
 
 	/**
 	 * Ouvre un menu permettant de charger une partie existante. Ne fait rien si elle est déjà ouverte
-	 * @return Le numéro de la partie à charger.
-	 * -1 si le joueur a annulé ou que la fenêtre est déjà ouverte
 	 */
 	public void afficherChargementPartie() {
 		if(!this.chargementAffiche){

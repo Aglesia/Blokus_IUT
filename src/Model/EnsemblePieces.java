@@ -1,8 +1,11 @@
 package Model;
 
+/**
+ * Ensemble de toutes les pièces, avec leurs matrices
+ */
 public class EnsemblePieces{
 	/**
-	 * Retourne un ensemble de pièces, placées sur une matrice de 13*17 cases
+	 * Retourne un ensemble de pièces, placées sur une matrice de 13*17 cases (pour la sélection)
 	 */
 	public static Piece[] pieces(){
 		Piece[] ret = new Piece[21];

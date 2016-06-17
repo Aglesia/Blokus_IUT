@@ -3,7 +3,14 @@ import java.awt.*;
 import javax.swing.*;
 import Model.Joueur;
 
+/**
+ * Fenêtre affichant les noms des gagnants, avec leur score
+ */
 public class AfficherGagnant extends JFrame{
+	/**
+	 * Crée la fenêtre et affiche les noms des gagnants et le score
+	 * @param      joueurs  Liste des joueurs gagnants
+	 */
 	public AfficherGagnant(Joueur[] joueurs){
 		String ligne = "Bravo à tous, vous n'êtes pas cappable de gagner une partie ;)";
 		if(joueurs!=null){
