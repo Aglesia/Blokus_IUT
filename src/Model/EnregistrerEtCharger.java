@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
+import java.io.File;
 
 /**
  * Permet d'enregistrer et de charger une partie.
@@ -29,7 +30,8 @@ public class EnregistrerEtCharger implements Serializable{
 		EnregistrerEtCharger objet = new EnregistrerEtCharger(partie);
 		ObjectOutputStream fichier = null;
 		try{
-			fichier = new ObjectOutputStream(new FileOutputStream("../data/saves/"+numero+".save"));
+			new File("./savesBlokus").mkdir();
+			fichier = new ObjectOutputStream(new FileOutputStream("./savesBlokus/"+numero+".save"));
 			fichier.writeObject(objet);
 		} catch (IOException e){
 			e.printStackTrace();
@@ -53,7 +55,7 @@ public class EnregistrerEtCharger implements Serializable{
 		EnregistrerEtCharger objet = null;
 		ObjectInputStream fichier = null;
 		try{
-			fichier = new ObjectInputStream(new FileInputStream("../data/saves/"+numero+".save"));
+			fichier = new ObjectInputStream(new FileInputStream("./savesBlokus/"+numero+".save"));
 			objet = (EnregistrerEtCharger)fichier.readObject();
 		} catch(FileNotFoundException e){
 			fichier = null;
