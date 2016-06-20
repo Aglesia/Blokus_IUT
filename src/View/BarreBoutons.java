@@ -1,6 +1,7 @@
 package View;
 import java.awt.*;
 import javax.swing.*;
+import 
 
 import Model.Partie;
 import Model.EnregistrerEtCharger;
@@ -73,6 +74,7 @@ public class BarreBoutons extends JPanel{
 	 * @param partie Partie actuelle
 	 */
 	public BarreBoutons(Partie partie, Info info) {
+		URL resource = classLoader().getResources("./");
 		EvenementBoutonBarre event = new EvenementBoutonBarre(partie, info);
 		boutonInverser = new Bouton("Inverser", null, new ImageIcon("./Ressources/inverser.png"), event, null);
 		boutonTourner = new Bouton("Tourner", null, new ImageIcon("./Ressources/rotation.png"), event, null);
