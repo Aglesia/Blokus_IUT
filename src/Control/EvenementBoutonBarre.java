@@ -63,7 +63,7 @@ public class EvenementBoutonBarre implements ActionListener{
 			break;
 
 			case "Quitter":
-				partie.quitterWarning();
+				partie.quitterWarning(true);
 				partie.pieceEstPlacee();
 			break;
 
@@ -72,13 +72,13 @@ public class EvenementBoutonBarre implements ActionListener{
 			break;
 
 			case "Warning":
+				partie.quitterWarning(false);
 				for(int i=0; i<10; i++)
 					if(!EnregistrerEtCharger.partieExiste(i)){
 						EnregistrerEtCharger.enregistrer(i, partie);
 						i = 10;
 					}
-				partie.quitterWarning();
-				partie.pieceEstPlacee();
+				partie.quitterWarning(true);
 			break;
 
 			default:

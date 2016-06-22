@@ -251,8 +251,22 @@ public class Partie implements Serializable{
 	/**
 	 * Indique au Main qu'on veut quitter d'urgence
 	 */
-	public void quitterWarning(){
-		this.partieFinie = 4;
+	public void quitterWarning(boolean partieEstEnregistree){
+		if(partieEstEnregistree){
+			this.partieFinie = 4;
+			this.piecePlacee = true;
+		}
+		else{
+			// On remet le joueur précédent
+			for(int i=0; i<4; i++)
+				if(joueurs[i]==joueurActuel){
+					if(i>0)
+						joueurActuel = joueurs[i-1];
+					else
+						joueurActuel = joueurs[3];
+					i=4;
+				}
+		}
 	}
 
 	/**
